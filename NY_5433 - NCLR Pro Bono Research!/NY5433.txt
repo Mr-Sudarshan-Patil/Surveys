@@ -1,0 +1,65 @@
+S1 remove comment
+S2 remove comment
+
+S4A Check Comment Text 
+S4B Check Comment Text
+
+S4B Please remove (PLEASE SPECIFY:)
+S5 Please remove (PLEASE SPECIFY:)
+
+
+S6 Please check comment text
+S6 Please remove (PLEASE SPECIFY:)
+S6 please close breacket use in S6.r12
+
+S7 Remove Comment and change preload r99 to r98
+S8 Remove Comment 
+S9 Romove comment
+
+S9_RECODE1 check the title name and chage it
+
+S9_RECODE1 : Please change these text as per the condition "Parent of 4 to 6 years" 
+
+S9A please use OE box ch95 
+S9A please add comment as per the QNR
+
+S10 Remove Comment
+
+S11 Remove Comment
+S11_A Remove Comment
+S11_A As Per the QNR No need to randomize R3
+
+S12 Remove Comment
+
+S100 Quota condition wrong
+Q4 Colon missing after specify
+
+Q22 / Q23 Some Part of Title is missing
+
+
+Q25 Check Q25 and Please change preload no in below text and colon is missing after specify
+11.	Someone else  – please specify:  [SPECIFY]
+12.	I have not discussed this topic with anyone [ANCHOR/EXCLUSIVE]
+13.	Don’t know [ANCHOR/EXCLUSIVE]
+
+
+Q26 Check Q26 and Please change preload no in below text and colon is missing after specify
+11.	Other, please specify: [ANCHOR] [SPECIFY]
+12.	None of the above [ANCHOR] [SPECIFY]
+
+
+Q28 please change r99 to r95 for the other specifiy
+
+
+Q29 Check Q29 and Please change preload no in below text and colon is missing after specify
+18.	Someone else, please specify: [ANCHOR; SPECIFY]
+19.	None of the above [ANCHOR; EXCLUSIVE]
+
+Q30  change preload c99 to c97
+
+
+D1_SEXUAL / D1_LGBTQ+ RECODE:  these two question is hidden questions please create a hidden
+
+D1 : Add OE box for other
+
+D7 : Add Values

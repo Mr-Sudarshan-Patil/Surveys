@@ -1,0 +1,1181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<survey 
+  alt="ETM Study Template"
+  autosave="0"
+  builder:wizardCompleted="1"
+  builderCompatible="1"
+  compat="150"
+  delphi="1"
+  extraVariables="source,record,decLang,list,userAgent"
+  fir="on"
+  html:showNumber="0"
+  mobile="compat"
+  mobileDevices="smartphone,tablet,desktop"
+  name="Survey"
+  secure="1"
+  setup="term,decLang,quota,time"
+  ss:disableBackButton="1"
+  ss:enableNavigation="1"
+  ss:hideProgressBar="0"
+  state="testing">
+
+<samplesources default="0">
+  <samplesource list="0">
+    <title>Open Survey</title>
+    <invalid>You are missing information in the URL. Please verify the URL with the original invite.</invalid>
+    <completed>It seems you have already entered this survey.</completed>
+    <var name="preload" values="1"/>
+    <exit cond="terminated">Thank you for taking our survey.</exit>
+    <exit cond="qualified">Thank you for taking our survey. Your efforts are greatly appreciated!</exit>
+    <exit cond="overquota">Thank you for taking our survey.</exit>
+  </samplesource>
+</samplesources>
+
+<suspend/>
+
+<radio 
+  label="P1_PRELOAD"
+  optional="1"
+  where="execute,survey,report">
+  <title>P1_PRELOAD: Audiences</title>
+  <exec>
+if preload=='1':
+   P1_PRELOAD.val=P1_PRELOAD.r1.index
+  </exec>
+
+  <row label="r1" value="1">US Gen Pop</row>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="S0_CONSENT">
+  <title>The survey data collected will be used for research purposes only, and all responses you provide are voluntary, anonymous and will be processed in aggregate to assist us and our client in understanding audiences like you. All information collected and processed will be done in accordance with local and international data protection laws.</title>
+  <comment>Based on the information above, do you agree to participate?</comment>
+  <row label="r1" value="1">Yes</row>
+  <row label="r2" value="2">No</row>
+</radio>
+
+<suspend/>
+
+<term label="S0_CONSENT_Term" cond="S0_CONSENT.r2">Terminate: If no Selected</term>
+
+<suspend/>
+
+<radio 
+  label="S1">
+  <title>What is your gender?</title>
+  <comment><i>Please select one.</i></comment>
+  <row label="r1" value="1">Man</row>
+  <row label="r2" value="2">Woman</row>
+  <row label="r3" value="3">Non-binary</row>
+  <row label="r4" open="1" openSize="25" randomize="0" value="4">Prefer to self-describe</row>
+  <row label="r99" randomize="0" value="99">Prefer not to answer</row>
+</radio>
+
+<suspend/>
+
+<number 
+  label="S2"
+  optional="0"
+  size="3"
+  ss:listDisplay="1"
+  ss:postText="years"
+  verify="range(1,100)">
+  <title>How old are you?</title>
+  <comment>Please type your age in the box below.</comment>
+  <noanswer label="r2">Prefer not to answer</noanswer>
+</number>
+
+<suspend/>
+
+<term label="term_S2" cond="S2.r2">Terminate: If r2 Selected</term>
+
+<suspend/>
+
+<radio 
+  label="S2A"
+  optional="1"
+  where="execute,survey,report">
+  <title>HIDDEN QUESTION - RECODE INTO THE FOLLOWING AGE GROUPS:</title>
+  <exec>
+ages = ['0-17' , '18-24', '25-34' , '35-44' , '45-54' , '55-64' , '65-100']
+for index, age in enumerate(ages):
+    if S2.check(age):
+        S2A.val = index
+  </exec>
+
+  <row label="r1" value="1">0-17</row>
+  <row label="r2" value="2">18-24</row>
+  <row label="r3" value="3">25-34</row>
+  <row label="r4" value="4">35-44</row>
+  <row label="r5" value="5">45-54</row>
+  <row label="r6" value="6">55-64</row>
+  <row label="r7" value="7">65 or more</row>
+</radio>
+
+<suspend/>
+
+<term label="term_S2A" cond="S2A.r1">Terminate: If r1 Selected</term>
+
+<suspend/>
+
+<radio 
+  label="Hid_S2A"
+  optional="1"
+  where="execute,survey,report">
+  <title>HIDDEN QUESTION - S2A</title>
+  <exec>
+if (S2A.r3 or S2A.r4 or S2A.r5 or S2A.r6):
+	Hid_S2A.val=Hid_S2A.r1.index
+else:
+	Hid_S2A.val=Hid_S2A.r2.index
+  </exec>
+
+  <row label="r1" value="1">Qualified</row>
+  <row label="r2" value="2">Not-Qualified</row>
+</radio>
+
+<suspend/>
+
+<select 
+  label="S3_US"
+  ss:listDisplay="1">
+  <title>What state do you live in?</title>
+  <choice label="ch1" value="1">Alabama</choice>
+  <choice label="ch2" value="2">Alaska</choice>
+  <choice label="ch3" value="3">Arizona</choice>
+  <choice label="ch4" value="4">Arkansas</choice>
+  <choice label="ch5" value="5">California</choice>
+  <choice label="ch6" value="6">Colorado</choice>
+  <choice label="ch7" value="7">Connecticut</choice>
+  <choice label="ch8" value="8">Delaware</choice>
+  <choice label="ch9" value="9">District of Columbia</choice>
+  <choice label="ch10" value="10">Florida</choice>
+  <choice label="ch11" value="11">Georgia</choice>
+  <choice label="ch12" value="12">Hawaii</choice>
+  <choice label="ch13" value="13">Idaho</choice>
+  <choice label="ch14" value="14">Illinois</choice>
+  <choice label="ch15" value="15">Indiana</choice>
+  <choice label="ch16" value="16">Iowa</choice>
+  <choice label="ch17" value="17">Kansas</choice>
+  <choice label="ch18" value="18">Kentucky</choice>
+  <choice label="ch19" value="19">Louisiana</choice>
+  <choice label="ch20" value="20">Maine</choice>
+  <choice label="ch21" value="21">Maryland</choice>
+  <choice label="ch22" value="22">Massachusetts</choice>
+  <choice label="ch23" value="23">Michigan</choice>
+  <choice label="ch24" value="24">Minnesota</choice>
+  <choice label="ch25" value="25">Mississippi</choice>
+  <choice label="ch26" value="26">Missouri</choice>
+  <choice label="ch27" value="27">Montana</choice>
+  <choice label="ch28" value="28">Nebraska</choice>
+  <choice label="ch29" value="29">Nevada</choice>
+  <choice label="ch30" value="30">New Hampshire</choice>
+  <choice label="ch31" value="31">New Jersey</choice>
+  <choice label="ch32" value="32">New Mexico</choice>
+  <choice label="ch33" value="33">New York</choice>
+  <choice label="ch34" value="34">North Carolina</choice>
+  <choice label="ch35" value="35">North Dakota</choice>
+  <choice label="ch36" value="36">Ohio</choice>
+  <choice label="ch37" value="37">Oklahoma</choice>
+  <choice label="ch38" value="38">Oregon</choice>
+  <choice label="ch39" value="39">Pennsylvania</choice>
+  <choice label="ch40" value="40">Rhode Island</choice>
+  <choice label="ch41" value="41">South Carolina</choice>
+  <choice label="ch42" value="42">South Dakota</choice>
+  <choice label="ch43" value="43">Tennessee</choice>
+  <choice label="ch44" value="44">Texas</choice>
+  <choice label="ch45" value="45">Utah</choice>
+  <choice label="ch46" value="46">Vermont</choice>
+  <choice label="ch47" value="47">Virginia</choice>
+  <choice label="ch48" value="48">Washington</choice>
+  <choice label="ch49" value="49">West Virginia</choice>
+  <choice label="ch50" value="50">Wisconsin</choice>
+  <choice label="ch51" value="51">Wyoming</choice>
+  <noanswer label="r54">Other</noanswer>
+  <noanswer label="r98">I do not live in the U.S.</noanswer>
+  <noanswer label="r99">Prefer not to answer</noanswer>
+</select>
+
+<suspend/>
+
+<term label="term_S3_US" cond="(S3_US.r54) or (S3_US.r98) or (S3_US.r99)">Terminate: If r98 or r99 Selected</term>
+
+<suspend/>
+
+<radio 
+  label="S3a_US"
+  optional="1"
+  where="execute,survey,report">
+  <title>RECODE S3a_US</title>
+  <exec>
+if (S3_US.ch7 or S3_US.ch20 or S3_US.ch22 or S3_US.ch30 or S3_US.ch31 or S3_US.ch33 or S3_US.ch39 or S3_US.ch40 or S3_US.ch46):
+	S3a_US.val=S3a_US.r1.index
+if (S3_US.ch14 or S3_US.ch15 or S3_US.ch16 or S3_US.ch17 or S3_US.ch23 or S3_US.ch24 or S3_US.ch26 or S3_US.ch28 or S3_US.ch35 or S3_US.ch36 or S3_US.ch42 or S3_US.ch50):
+	S3a_US.val=S3a_US.r2.index
+if (S3_US.ch1 or S3_US.ch4 or S3_US.ch8 or S3_US.ch9 or S3_US.ch10 or S3_US.ch11 or S3_US.ch18 or S3_US.ch19 or S3_US.ch21 or S3_US.ch25 or S3_US.ch34 or S3_US.ch37 or S3_US.ch41 or S3_US.ch43 or S3_US.ch44 or S3_US.ch47 or S3_US.ch49):
+	S3a_US.val=S3a_US.r3.index
+if (S3_US.ch2 or S3_US.ch3 or S3_US.ch5 or S3_US.ch6 or S3_US.ch12 or S3_US.ch13 or S3_US.ch27 or S3_US.ch29 or S3_US.ch32 or S3_US.ch38 or S3_US.ch45 or S3_US.ch51 or S3_US.ch48):
+	S3a_US.val=S3a_US.r4.index
+  </exec>
+
+  <row label="r1" value="1">Northeast: CT, ME, MA, NH, RI, VT, NJ, NY, PA</row>
+  <row label="r2" value="2">Midwest:  IL, IN, MI, OH, WI, IA, KS, MN, MO, NE, ND, SD</row>
+  <row label="r3" value="3">South:  DE, DC, FL, GA, MD, NC, SC, VA, WV, AL, KY, MS, TN, AR, LA, OK, TX</row>
+  <row label="r4" value="4">West:  AZ, CO, ID, MT, NV, NM, UT, WY, AK, CA, HI, OR, WA</row>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="S4_US">
+  <title>What is the last grade in school you completed?</title>
+  <row label="r1" value="1">Grade school or less</row>
+  <row label="r2" value="2">Some high school</row>
+  <row label="r3" value="3">Graduated high school</row>
+  <row label="r4" value="4">Vocational school/ Technical school</row>
+  <row label="r5" value="5">Some college</row>
+  <row label="r6" value="6">Graduated college</row>
+  <row label="r7" value="7">Post-graduate degree (e.g. MA, MBA, LLD, PhD)</row>
+  <row label="r99" randomize="0" value="99">Prefer not to answer</row>
+</radio>
+
+<suspend/>
+
+<term label="term_S4_US" cond="S4_US.r99">Terminate: If  r99 Selected</term>
+
+<suspend/>
+
+<radio 
+  label="Hid_S4_US"
+  optional="1"
+  where="execute,survey,report">
+  <title>HIDDEN QUESTION - S4_US</title>
+  <exec>
+if (S4_US.r6 or S4_US.r7):
+	Hid_S4_US.val=Hid_S4_US.r1.index
+else:
+	Hid_S4_US.val=Hid_S4_US.r2.index
+  </exec>
+
+  <row label="r1" value="1">Qualified</row>
+  <row label="r2" value="2">Not-Qualified</row>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="S5_US">
+  <title>Thinking about your annual household income in 2021, which of the following categories best describes your total household income that year?</title>
+  <row label="r1" value="1">Under $10,000</row>
+  <row label="r2" value="2">$10,000 - $24,999</row>
+  <row label="r3" value="3">$25,000 - $39,999</row>
+  <row label="r4" value="4">$40,000 - $49,999</row>
+  <row label="r5" value="5">$50,000 - $59,999</row>
+  <row label="r6" value="6">$60,000 - $74,999</row>
+  <row label="r7" value="7">$75,000 - $82,499</row>
+  <row label="r8" value="8">$82,500 - $99,999</row>
+  <row label="r9" value="9">$100,000 - $109,999</row>
+  <row label="r10" value="10">$110,000 - $119,999</row>
+  <row label="r11" value="11">$120,000 or more</row>
+  <row label="r98" randomize="0" value="98">Don't Know</row>
+  <row label="r99" randomize="0" value="99">Prefer not to answer</row>
+</radio>
+
+<suspend/>
+
+<term label="term_S5_US" cond="S5_US.r99">Terminate: If  r99 Selected</term>
+
+<suspend/>
+
+<radio 
+  label="Hid_S5_US"
+  optional="1"
+  where="execute,survey,report">
+  <title>HIDDEN QUESTION - S5_US</title>
+  <exec>
+if (S5_US.r7 or S5_US.r8 or S5_US.r9 or S5_US.r10 or S5_US.r11):
+	Hid_S5_US.val=Hid_S5_US.r1.index
+else:
+	Hid_S5_US.val=Hid_S5_US.r2.index
+  </exec>
+
+  <row label="r1" value="1">Qualified</row>
+  <row label="r2" value="2">Not-Qualified</row>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="S6">
+  <title>How often do you follow public policy matters in the news?</title>
+  <row label="r1" value="1">Nearly every day or every day</row>
+  <row label="r2" value="2">Several times a week</row>
+  <row label="r3" value="3">Once a week</row>
+  <row label="r4" value="4">I do not focus on public policy matters</row>
+  <row label="r99" randomize="0" value="99">Prefer not to answer</row>
+</radio>
+
+<suspend/>
+
+<term label="S6_Term" cond="S6.r99">Terminate: If  r99 Selected</term>
+
+<suspend/>
+
+<radio 
+  label="Hid_S6"
+  optional="1"
+  where="execute,survey,report">
+  <title>HIDDEN QUESTION - S6</title>
+  <exec>
+if (S6.r1 or S6.r2):
+	Hid_S6.val=Hid_S6.r1.index
+else:
+	Hid_S6.val=Hid_S6.r2.index
+  </exec>
+
+  <row label="r1" value="1">Qualified</row>
+  <row label="r2" value="2">Not-Qualified</row>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="S7">
+  <title>How often do you follow business news and information?</title>
+  <row label="r1" value="1">Nearly every day or every day</row>
+  <row label="r2" value="2">Several times a week</row>
+  <row label="r3" value="3">Once a week</row>
+  <row label="r4" value="4">Less than once a week</row>
+  <row label="r99" value="99">Prefer not to answer</row>
+</radio>
+
+<suspend/>
+
+<term label="S7_Term" cond="S7.r99">Terminate: If  r99 Selected</term>
+
+<suspend/>
+
+<radio 
+  label="Hid_S7"
+  optional="1"
+  where="execute,survey,report">
+  <title>HIDDEN QUESTION - S7</title>
+  <exec>
+if (S7.r1 or S7.r2):
+	Hid_S7.val=Hid_S7.r1.index
+else:
+	Hid_S7.val=Hid_S7.r2.index
+  </exec>
+
+  <row label="r1" value="1">Qualified</row>
+  <row label="r2" value="2">Not-Qualified</row>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="S9">
+  <title>Do you consider yourself to be of Hispanic or Latino/a/x origin?</title>
+  <comment><i>Please select one response.</i></comment>
+  <row label="r1" value="1">Yes</row>
+  <row label="r2" value="2">No</row>
+  <row label="r99" randomize="0" value="99">Prefer not to answer</row>
+</radio>
+
+<suspend/>
+
+<checkbox 
+  label="S8"
+  atleast="1">
+  <title>Which of the following best describes your racial background?</title>
+  <comment><i>Please select all that apply.</i></comment>
+  <row label="r1">White or Caucasian</row>
+  <row label="r2">Black or African American</row>
+  <row label="r3">Asian or Asian American</row>
+  <row label="r4">Native Hawaiian or Other Pacific Islander</row>
+  <row label="r5">Indigenous American or Indigenous Alaskan</row>
+  <row label="r6">Middle Eastern or North African</row>
+  <row label="r7" open="1" openSize="25" randomize="0">Prefer to self-describe, specify:</row>
+  <row label="r99" exclusive="1" randomize="0">Prefer not to answer</row>
+</checkbox>
+
+<suspend/>
+
+<checkbox 
+  label="S9a"
+  optional="1"
+  where="execute,survey,report">
+  <title>HIDDEN QUESTION: RACE/ETHNICITY RECODE</title>
+  <exec>
+if (S8.r1 or S8.r6) and (S9.r2 or S9.r99) and (S8.count == 1):	
+	S9a.r1.val=1
+if (S8.r2) and (S9.r2 or S9.r99) and (S8.count == 1):	
+	S9a.r2.val=1
+if (S9.r1):	
+	S9a.r3.val=1
+if (S8.r3 or S8.r4) and (S9.r2 or S9.r99) and (S8.count == 1):	
+	S9a.r4.val=1
+if (S8.r5 or S8.r7) and (S9.r2 or S9.r99) and (S8.count gt 1):	
+	S9a.r5.val=1
+if (S8.r99) and (S9.r99):	
+	S9a.r6.val=1
+  </exec>
+
+  <row label="r1" value="1">NH-White</row>
+  <row label="r2" value="2">NH-Black</row>
+  <row label="r3" value="3">Hispanic</row>
+  <row label="r4" value="4">NH-Asian</row>
+  <row label="r5" value="5">NH-Other</row>
+  <row label="r6" value="6">Prefer not to answer</row>
+</checkbox>
+
+<suspend/>
+
+<radio 
+  label="S9b"
+  optional="1"
+  where="execute,survey,report">
+  <title>Recode (Multi/Biracial)</title>
+  <exec>
+if (S8.count gt 1):	
+	S9b.val=S9b.r1.index
+if (S8.count == 1):	
+	S9b.val=S9b.r2.index
+  </exec>
+
+  <row label="r1" value="1">Multiracial</row>
+  <row label="r2" value="2">Non-Multiracial</row>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="S100"
+  optional="1"
+  where="execute,survey,report">
+  <title>S100: FOR AUDIENCE QUALIFICATIONS</title>
+  <row label="r1" value="1">Qualified</row>
+  <row label="r2" value="2">Not-Qualified</row>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="Hid_Pipe_ENTS0"
+  optional="1"
+  where="execute,survey,report">
+  <title>HIDDEN QUESTION - PIPE-ENTS0-ENTS6</title>
+  <row label="r1" value="1">COMPANIES</row>
+  <row label="r2" value="2">BRANDS</row>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="ENTS0"
+  shuffle="rows">
+  <title>How familiar are you with the following [pipe: Hid_Pipe_ENTS0]?</title>
+  <row label="r1">CLIENT</row>
+  <row label="r2">COMPETITOR 1</row>
+  <row label="r3">COMPETITOR 2</row>
+  <row label="r4">COMPETITOR 3</row>
+  <row label="r5">COMPETITOR 4</row>
+  <row label="r6">COMPETITOR 5</row>
+  <col label="c1" value="1">Not at all familiar</col>
+  <col label="c2" value="2">Slightly familiar <br /> (I have heard the name but not much else)</col>
+  <col label="c3" value="3">Moderately familiar</col>
+  <col label="c4" value="4">Very familiar</col>
+  <col label="c5" value="5">Extremely familiar</col>
+</radio>
+
+<suspend/>
+
+<term label="ENTS0_Term" cond="(ENTS0.r1.c1)"/>
+<suspend/>
+
+<text 
+  label="ENTS0a"
+  cond="(ENTS0.r1.c2 or ENTS0.r1.c3 or ENTS0.r1.c4 or ENTS0.r1.c5)"
+  optional="0">
+  <title>What words or phrases come to mind when you think about [pipe: Hid_Pipe_ENTS0]?</title>
+</text>
+
+<suspend/>
+
+<exec>
+ENTS1.rows.order=ENTS0.rows.order
+</exec>
+
+<suspend/>
+
+<radio 
+  label="ENTS1"
+  shuffle="rows">
+  <title>Please indicate how much you trust the following [pipe: Hid_Pipe_ENTS0] to do what is right, using a 9-point scale where one means that you "do not trust them at all" and nine means that you "trust them a great deal".</title>
+  <row label="r1" cond="(ENTS0.r1.c2 or ENTS0.r1.c3 or ENTS0.r1.c4 or ENTS0.r1.c5)">CLIENT</row>
+  <row label="r2" cond="(ENTS0.r2.c2 or ENTS0.r2.c3 or ENTS0.r2.c4 or ENTS0.r2.c5)">COMPETITOR 1</row>
+  <row label="r3" cond="(ENTS0.r3.c2 or ENTS0.r3.c3 or ENTS0.r3.c4 or ENTS0.r3.c5)">COMPETITOR 2</row>
+  <row label="r4" cond="(ENTS0.r4.c2 or ENTS0.r4.c3 or ENTS0.r4.c4 or ENTS0.r4.c5)">COMPETITOR 3</row>
+  <row label="r5" cond="(ENTS0.r5.c2 or ENTS0.r5.c3 or ENTS0.r5.c4 or ENTS0.r5.c5)">COMPETITOR 4</row>
+  <row label="r6" cond="(ENTS0.r6.c2 or ENTS0.r6.c3 or ENTS0.r6.c4 or ENTS0.r6.c5)">COMPETITOR 5</row>
+  <col label="c1" value="1">Do not trust them at all</col>
+  <col label="c2" value="2"/>
+  <col label="c3" value="3"/>
+  <col label="c4" value="4"/>
+  <col label="c5" value="5"/>
+  <col label="c6" value="6"/>
+  <col label="c7" value="7"/>
+  <col label="c8" value="8"/>
+  <col label="c9" value="9">Trust them a great deal</col>
+  <col label="c98" value="98">Don't Know</col>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="pipe_1a1b"
+  optional="1"
+  where="execute,survey,report">
+  <title>Pipe: ENTS1a / ENTS1b</title>
+  <exec>
+if (ENTS1.r1.c1 or ENTS1.r1.c2 or ENTS1.r1.c3 or ENTS1.r1.c4):	
+	pipe_1a1b.val=pipe_1a1b.r1.index
+	
+if (ENTS1.r1.c7 or ENTS1.r1.c8 or ENTS1.r1.c9):
+	pipe_1a1b.val=pipe_1a1b.r2.index
+  </exec>
+
+  <row label="r1" value="1">Do not trust them at all</row>
+  <row label="r2" value="2">Trust them a great deal</row>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="Pipe_ENTS1a_ENTS1b"
+  optional="1"
+  where="execute,survey,report">
+  <title>Pipe2: ENTS1a / ENTS1b</title>
+  <row label="r1" value="1">CLIENT</row>
+  <row label="r2" value="2">COMPETITOR 1</row>
+  <row label="r3" value="3">COMPETITOR 2</row>
+  <row label="r4" value="4">COMPETITOR 3</row>
+  <row label="r5" value="5">COMPETITOR 4</row>
+  <row label="r6" value="6">COMPETITOR 5</row>
+</radio>
+
+<suspend/>
+
+<text 
+  label="ENTS1a"
+  cond="(ENTS1.r1.c7 or ENTS1.r1.c8 or ENTS1.r1.c9)"
+  optional="0">
+  <title>You rated your trust in CLIENT as [pipe: pipe_1a1b]. Why do you trust [pipe: Pipe_ENTS1a_ENTS1b] to do what is right?</title>
+</text>
+
+<suspend/>
+
+<text 
+  label="ENTS1b"
+  cond="(ENTS1.r1.c1 or ENTS1.r1.c2 or ENTS1.r1.c3 or ENTS1.r1.c4)"
+  optional="0">
+  <title>You rated your trust in CLIENT as [pipe: pipe_1a1b]. Why do you <u>not</u> trust [pipe: Pipe_ENTS1a_ENTS1b] to do what is right?</title>
+</text>
+
+<suspend/>
+
+<exec>
+ENTS2.rows.order=ENTS0.rows.order
+</exec>
+
+<suspend/>
+
+<radio 
+  label="ENTS2"
+  shuffle="rows">
+  <title>How much do you agree or disagree that the following [pipe: Hid_Pipe_ENTS0] are <b>good at what they do</b>?</title>
+  <row label="r1" cond="(ENTS0.r1.c2 or ENTS0.r1.c3 or ENTS0.r1.c4 or ENTS0.r1.c5)">CLIENT</row>
+  <row label="r2" cond="(ENTS0.r2.c2 or ENTS0.r2.c3 or ENTS0.r2.c4 or ENTS0.r2.c5)">COMPETITOR 1</row>
+  <row label="r3" cond="(ENTS0.r3.c2 or ENTS0.r3.c3 or ENTS0.r3.c4 or ENTS0.r3.c5)">COMPETITOR 2</row>
+  <row label="r4" cond="(ENTS0.r4.c2 or ENTS0.r4.c3 or ENTS0.r4.c4 or ENTS0.r4.c5)">COMPETITOR 3</row>
+  <row label="r5" cond="(ENTS0.r5.c2 or ENTS0.r5.c3 or ENTS0.r5.c4 or ENTS0.r5.c5)">COMPETITOR 4</row>
+  <row label="r6" cond="(ENTS0.r6.c2 or ENTS0.r6.c3 or ENTS0.r6.c4 or ENTS0.r6.c5)">COMPETITOR 5</row>
+  <col label="c1" value="1">Totally disagree</col>
+  <col label="c2" value="2"/>
+  <col label="c3" value="3"/>
+  <col label="c4" value="4">Neither agree nor disagree</col>
+  <col label="c5" value="5"/>
+  <col label="c6" value="6"/>
+  <col label="c7" value="7">Totally agree</col>
+  <col label="c98" value="98">Don’t know enough to say</col>
+</radio>
+
+<suspend/>
+
+<exec>
+ENTS3.rows.order=ENTS0.rows.order
+</exec>
+
+<suspend/>
+
+<radio 
+  label="ENTS3"
+  shuffle="rows">
+  <title>How much do you agree or disagree that the following [pipe: Hid_Pipe_ENTS0] are <b>honest</b>?</title>
+  <row label="r1" cond="(ENTS0.r1.c2 or ENTS0.r1.c3 or ENTS0.r1.c4 or ENTS0.r1.c5)">CLIENT</row>
+  <row label="r2" cond="(ENTS0.r2.c2 or ENTS0.r2.c3 or ENTS0.r2.c4 or ENTS0.r2.c5)">COMPETITOR 1</row>
+  <row label="r3" cond="(ENTS0.r3.c2 or ENTS0.r3.c3 or ENTS0.r3.c4 or ENTS0.r3.c5)">COMPETITOR 2</row>
+  <row label="r4" cond="(ENTS0.r4.c2 or ENTS0.r4.c3 or ENTS0.r4.c4 or ENTS0.r4.c5)">COMPETITOR 3</row>
+  <row label="r5" cond="(ENTS0.r5.c2 or ENTS0.r5.c3 or ENTS0.r5.c4 or ENTS0.r5.c5)">COMPETITOR 4</row>
+  <row label="r6" cond="(ENTS0.r6.c2 or ENTS0.r6.c3 or ENTS0.r6.c4 or ENTS0.r6.c5)">COMPETITOR 5</row>
+  <col label="c1" value="1">Totally disagree</col>
+  <col label="c2" value="2"/>
+  <col label="c3" value="3"/>
+  <col label="c4" value="4">Neither agree nor disagree</col>
+  <col label="c5" value="5"/>
+  <col label="c6" value="6"/>
+  <col label="c7" value="7">Totally agree</col>
+  <col label="c98" value="98">Don’t know enough to say</col>
+</radio>
+
+<suspend/>
+
+<exec>
+ENTS4.rows.order=ENTS0.rows.order
+</exec>
+
+<suspend/>
+
+<radio 
+  label="ENTS4"
+  shuffle="rows">
+  <title>How much do you agree or disagree that the following [pipe: Hid_Pipe_ENTS0] are <b>keeping their promises</b>?</title>
+  <row label="r1" cond="(ENTS0.r1.c2 or ENTS0.r1.c3 or ENTS0.r1.c4 or ENTS0.r1.c5)">CLIENT</row>
+  <row label="r2" cond="(ENTS0.r2.c2 or ENTS0.r2.c3 or ENTS0.r2.c4 or ENTS0.r2.c5)">COMPETITOR 1</row>
+  <row label="r3" cond="(ENTS0.r3.c2 or ENTS0.r3.c3 or ENTS0.r3.c4 or ENTS0.r3.c5)">COMPETITOR 2</row>
+  <row label="r4" cond="(ENTS0.r4.c2 or ENTS0.r4.c3 or ENTS0.r4.c4 or ENTS0.r4.c5)">COMPETITOR 3</row>
+  <row label="r5" cond="(ENTS0.r5.c2 or ENTS0.r5.c3 or ENTS0.r5.c4 or ENTS0.r5.c5)">COMPETITOR 4</row>
+  <row label="r6" cond="(ENTS0.r6.c2 or ENTS0.r6.c3 or ENTS0.r6.c4 or ENTS0.r6.c5)">COMPETITOR 5</row>
+  <col label="c1" value="1">Totally disagree</col>
+  <col label="c2" value="2"/>
+  <col label="c3" value="3"/>
+  <col label="c4" value="4">Neither agree nor disagree</col>
+  <col label="c5" value="5"/>
+  <col label="c6" value="6"/>
+  <col label="c7" value="7">Totally agree</col>
+  <col label="c98" value="98">Don’t know enough to say</col>
+</radio>
+
+<suspend/>
+
+<exec>
+ENTS5.rows.order=ENTS0.rows.order
+</exec>
+
+<suspend/>
+
+<radio 
+  label="ENTS5"
+  shuffle="rows">
+  <title>How much do you agree or disagree that the following [pipe: Hid_Pipe_ENTS0] are <b>trying hard to have a positive impact on society</b>?</title>
+  <row label="r1" cond="(ENTS0.r1.c2 or ENTS0.r1.c3 or ENTS0.r1.c4 or ENTS0.r1.c5)">CLIENT</row>
+  <row label="r2" cond="(ENTS0.r2.c2 or ENTS0.r2.c3 or ENTS0.r2.c4 or ENTS0.r2.c5)">COMPETITOR 1</row>
+  <row label="r3" cond="(ENTS0.r3.c2 or ENTS0.r3.c3 or ENTS0.r3.c4 or ENTS0.r3.c5)">COMPETITOR 2</row>
+  <row label="r4" cond="(ENTS0.r4.c2 or ENTS0.r4.c3 or ENTS0.r4.c4 or ENTS0.r4.c5)">COMPETITOR 3</row>
+  <row label="r5" cond="(ENTS0.r5.c2 or ENTS0.r5.c3 or ENTS0.r5.c4 or ENTS0.r5.c5)">COMPETITOR 4</row>
+  <row label="r6" cond="(ENTS0.r6.c2 or ENTS0.r6.c3 or ENTS0.r6.c4 or ENTS0.r6.c5)">COMPETITOR 5</row>
+  <col label="c1" value="1">Totally disagree</col>
+  <col label="c2" value="2"/>
+  <col label="c3" value="3"/>
+  <col label="c4" value="4">Neither agree nor disagree</col>
+  <col label="c5" value="5"/>
+  <col label="c6" value="6"/>
+  <col label="c7" value="7">Totally agree</col>
+  <col label="c98" value="98">Don’t know enough to say</col>
+</radio>
+
+<suspend/>
+
+<exec>
+ENTS6.rows.order=ENTS0.rows.order
+</exec>
+
+<suspend/>
+
+<radio 
+  label="ENTS6"
+  shuffle="rows">
+  <title>How much do you agree or disagree that the following [pipe: Hid_Pipe_ENTS0] are <b>a good fit with who you are as a person</b>?</title>
+  <row label="r1" cond="(ENTS0.r1.c2 or ENTS0.r1.c3 or ENTS0.r1.c4 or ENTS0.r1.c5)">CLIENT</row>
+  <row label="r2" cond="(ENTS0.r2.c2 or ENTS0.r2.c3 or ENTS0.r2.c4 or ENTS0.r2.c5)">COMPETITOR 1</row>
+  <row label="r3" cond="(ENTS0.r3.c2 or ENTS0.r3.c3 or ENTS0.r3.c4 or ENTS0.r3.c5)">COMPETITOR 2</row>
+  <row label="r4" cond="(ENTS0.r4.c2 or ENTS0.r4.c3 or ENTS0.r4.c4 or ENTS0.r4.c5)">COMPETITOR 3</row>
+  <row label="r5" cond="(ENTS0.r5.c2 or ENTS0.r5.c3 or ENTS0.r5.c4 or ENTS0.r5.c5)">COMPETITOR 4</row>
+  <row label="r6" cond="(ENTS0.r6.c2 or ENTS0.r6.c3 or ENTS0.r6.c4 or ENTS0.r6.c5)">COMPETITOR 5</row>
+  <col label="c1" value="1">Totally disagree</col>
+  <col label="c2" value="2"/>
+  <col label="c3" value="3"/>
+  <col label="c4" value="4">Neither agree nor disagree</col>
+  <col label="c5" value="5"/>
+  <col label="c6" value="6"/>
+  <col label="c7" value="7">Totally agree</col>
+  <col label="c98" value="98">Don’t know enough to say</col>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="Pipe_info"
+  optional="1"
+  where="execute,survey,report">
+  <title>Pipe: info4</title>
+  <row label="r1" value="1">MARKET</row>
+  <row label="r2" value="2">MARKET2</row>
+</radio>
+
+<suspend/>
+
+<html label="Info4">Now we would like to focus in more detail about how specific companies in <b>[pipe: Pipe_info] </b>perform on a set of specific behaviors.</html>
+
+<suspend/>
+
+<radio 
+  label="pipe_ENTS7_CORP"
+  optional="1"
+  where="execute,survey,report">
+  <title>Pipe: ENTS7_CORP / ENTS7_BRAND</title>
+  <row label="r1" value="1">COMPANY</row>
+  <row label="r2" value="1">BRAND</row>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="ENTS7_CORP">
+  <title>How much do you agree or disagree about the following statements about [pipe: pipe_ENTS7_CORP]?</title>
+  <comment>Please use a 7-point scale where 1 means that you ‘strongly disagree’ and 7 means that you ‘strongly agree’.</comment>
+  <row label="r1"><b>Creates game-changing innovations</b></row>
+  <row label="r2">Delivers strong business and financial performance</row>
+  <row label="r3">Delivers high quality products or services</row>
+  <row label="r4">Attracts and retains the best talent in the industry</row>
+  <row label="r5">Has a clear vision for the future of the industry</row>
+  <row label="r6"><b>Factors the company values in its decisions</b></row>
+  <row label="r7">Provides a diverse and inclusive environment to their employees</row>
+  <row label="r8">Handles customers’ data with integrity</row>
+  <row label="r9">Treats their employees well</row>
+  <row label="r10">Provides transparent and accurate information</row>
+  <row label="r11">Is fair in the way it does business</row>
+  <row label="r12"><b>Is truthful and transparent in its communication</b></row>
+  <row label="r13">Takes action to address any issue that could have a negative impact on people</row>
+  <row label="r14">Takes necessary measures to ensure errors made in the past cannot happen again</row>
+  <row label="r15">Delivers against the commitments they have communicated</row>
+  <row label="r16">Consistently operates within its core values</row>
+  <row label="r17"><b>Clearly explains what it stands for as an organization</b></row>
+  <row label="r18">Cares for their employees’ best interests when making decisions</row>
+  <row label="r19">Cares for the environment / sustainability when making decisions</row>
+  <row label="r20">Takes specific actions to support diversity/inclusivity</row>
+  <row label="r21">Champions values and beliefs that matter to me</row>
+  <row label="r22"><b>Is relevant to my culture and my interests</b></row>
+  <row label="r23">Creates stories and experiences that are worth my time</row>
+  <row label="r24">Is a company I could see myself working for if they had a position that matched me</row>
+  <row label="r25">Supports causes that are important to me</row>
+  <row label="r26">Has values similar to my own</row>
+  <row label="r27">Is a company I would defend</row>
+  <col label="c1">I strongly disagree</col>
+  <col label="c2"/>
+  <col label="c3"/>
+  <col label="c4"/>
+  <col label="c5"/>
+  <col label="c6"/>
+  <col label="c7">I strongly agree</col>
+  <col label="c99">Don’t know enough to tell</col>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="ENTS7_BRAND">
+  <title>How much do you agree or disagree about the following statements about [pipe: pipe_ENTS7_CORP]?</title>
+  <comment>Please use a 7-point scale where 1 means that you ‘strongly disagree’ and 7 means that you ‘strongly agree’.</comment>
+  <row label="r1"><b>Delivers high quality products or services</b></row>
+  <row label="r2">Creates products and services that put consumer safety first</row>
+  <row label="r3">Innovates and adapts to what people really need today</row>
+  <row label="r4"><b>Does what is right by its customers</b></row>
+  <row label="r5">Does what is right by its employees</row>
+  <row label="r6">Consistently behaves in an ethical way</row>
+  <row label="r7"><b>Is truthful and transparent in its communication</b></row>
+  <row label="r8">Gives value for money</row>
+  <row label="r9">Keeps its promises, even when something goes wrong</row>
+  <row label="r10"><b>Champions values &amp; beliefs that matter that matter to me</b></row>
+  <row label="r11">Cares more about people than profit</row>
+  <row label="r12">Does what it takes to have a positive impact on the environment</row>
+  <row label="r13">Is relevant to my culture and my interests</row>
+  <row label="r14">Creates stories and experiences that are worth my time</row>
+  <row label="r15">Is a brand I would defend</row>
+  <col label="c1" value="1">I strongly disagree</col>
+  <col label="c2" value="2"/>
+  <col label="c3" value="3"/>
+  <col label="c4" value="4"/>
+  <col label="c5" value="5"/>
+  <col label="c6" value="6"/>
+  <col label="c7" value="7">I strongly agree</col>
+  <col label="c99" value="99">Don’t know enough to tell</col>
+</radio>
+
+<suspend/>
+
+<exec>
+ENTS8.rows.order=ENTS0.rows.order
+</exec>
+
+<suspend/>
+
+<radio 
+  label="ENTS8"
+  shuffle="rows">
+  <title>How likely is it that you would recommend the following companies to a friend or colleague?</title>
+  <row label="r1" cond="(ENTS0.r1.c2 or ENTS0.r1.c3 or ENTS0.r1.c4 or ENTS0.r1.c5)">CLIENT</row>
+  <row label="r2" cond="(ENTS0.r2.c2 or ENTS0.r2.c3 or ENTS0.r2.c4 or ENTS0.r2.c5)">COMPETITOR 1</row>
+  <row label="r3" cond="(ENTS0.r3.c2 or ENTS0.r3.c3 or ENTS0.r3.c4 or ENTS0.r3.c5)">COMPETITOR 2</row>
+  <row label="r4" cond="(ENTS0.r4.c2 or ENTS0.r4.c3 or ENTS0.r4.c4 or ENTS0.r4.c5)">COMPETITOR 3</row>
+  <row label="r5" cond="(ENTS0.r5.c2 or ENTS0.r5.c3 or ENTS0.r5.c4 or ENTS0.r5.c5)">COMPETITOR 4</row>
+  <col label="c0" value="0">Not at all likely</col>
+  <col label="c1" value="1"/>
+  <col label="c2" value="2"/>
+  <col label="c3" value="3"/>
+  <col label="c4" value="4"/>
+  <col label="c5" value="5"/>
+  <col label="c6" value="6"/>
+  <col label="c7" value="7"/>
+  <col label="c8" value="8"/>
+  <col label="c9" value="9"/>
+  <col label="c10" value="10">Extremely Likely</col>
+</radio>
+
+<suspend/>
+
+<checkbox 
+  label="Hid_ENTS8"
+  optional="1"
+  where="execute,survey,report">
+  <title>HIDDEN QUESTION: NPS RECODE</title>
+  <row label="r1">PROMOTERS (ENTS8/10 or 9 AND USERS of brand and corporation at ENTS11/1)</row>
+  <row label="r2">PASSIVES (ENTS8/8 or 7 AND USERS of brand and corporation at ENTS11/1)</row>
+  <row label="r3">DETRACTORS (ENTS8/0-6 AND USERS of brand and corporation at ENTS11/1)</row>
+</checkbox>
+
+<suspend/>
+
+<exec>
+ENTS9.rows.order=ENTS0.rows.order
+</exec>
+
+<suspend/>
+
+<radio 
+  label="ENTS9"
+  shuffle="rows">
+  <title>Have you read, heard or seen anything in the news about the following companies and was the news positive, negative or neutral?</title>
+  <row label="r1" cond="(ENTS0.r1.c2 or ENTS0.r1.c3 or ENTS0.r1.c4 or ENTS0.r1.c5)">CLIENT</row>
+  <row label="r2" cond="(ENTS0.r2.c2 or ENTS0.r2.c3 or ENTS0.r2.c4 or ENTS0.r2.c5)">COMPETITOR 1</row>
+  <row label="r3" cond="(ENTS0.r3.c2 or ENTS0.r3.c3 or ENTS0.r3.c4 or ENTS0.r3.c5)">COMPETITOR 2</row>
+  <row label="r4" cond="(ENTS0.r4.c2 or ENTS0.r4.c3 or ENTS0.r4.c4 or ENTS0.r4.c5)">COMPETITOR 3</row>
+  <row label="r5" cond="(ENTS0.r5.c2 or ENTS0.r5.c3 or ENTS0.r5.c4 or ENTS0.r5.c5)">COMPETITOR 4</row>
+  <col label="c1" value="1">Yes, and the news was <b>positive</b></col>
+  <col label="c2" value="2">Yes, and the news was <b>negative</b></col>
+  <col label="c3" value="3">Yes, and the news was <b>neutral</b></col>
+  <col label="c4" value="4">No, I did not read, see or hear any news</col>
+  <col label="c98" value="98">Don’t know</col>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="Pipe_ENTS9_OPEN"
+  optional="1"
+  where="execute,survey,report">
+  <title>Pipe: ENTS9_OPEN</title>
+  <row label="r1" value="1">CLIENT</row>
+  <row label="r2" value="2">COMPETITOR 1</row>
+  <row label="r3" value="3">COMPETITOR 2</row>
+  <row label="r4" value="4">COMPETITOR 3</row>
+  <row label="r5" value="5">COMPETITOR 4</row>
+  <row label="r6" value="6">COMPETITOR 5</row>
+</radio>
+
+<suspend/>
+
+<text 
+  label="ENTS9_OPEN"
+  cond="(ENTS9.r1.c1 or ENTS9.r1.c2 or ENTS9.r1.c3)"
+  optional="0">
+  <title>What specifically did you see, hear, or read about [pipe: Pipe_ENTS9_OPEN]? </title>
+  <comment>Please be as specific as possible.</comment>
+  <row label="r1"/>
+  <noanswer label="r2">Not sure</noanswer>
+</text>
+
+<suspend/>
+
+<exec>
+ENTS9a.rows.order=ENTS0.rows.order
+</exec>
+
+<suspend/>
+
+<radio 
+  label="ENTS9a"
+  shuffle="rows">
+  <title>Which of the following statements best describes the buzz about the following brands right now? </title>
+  <comment>By “buzz” we mean what you are hearing about the brand in the news, on social media, or in conversations.</comment>
+  <row label="r1" cond="(ENTS0.r1.c2 or ENTS0.r1.c3 or ENTS0.r1.c4 or ENTS0.r1.c5)">CLIENT</row>
+  <row label="r2" cond="(ENTS0.r2.c2 or ENTS0.r2.c3 or ENTS0.r2.c4 or ENTS0.r2.c5)">COMPETITOR 1</row>
+  <row label="r3" cond="(ENTS0.r3.c2 or ENTS0.r3.c3 or ENTS0.r3.c4 or ENTS0.r3.c5)">COMPETITOR 2</row>
+  <row label="r4" cond="(ENTS0.r4.c2 or ENTS0.r4.c3 or ENTS0.r4.c4 or ENTS0.r4.c5)">COMPETITOR 3</row>
+  <row label="r5" cond="(ENTS0.r5.c2 or ENTS0.r5.c3 or ENTS0.r5.c4 or ENTS0.r5.c5)">COMPETITOR 4</row>
+  <col label="c1" value="1">Right now, the buzz about this brand is  <u>very positive</u></col>
+  <col label="c2" value="2">Right now, the buzz about this brand is <u>quite positive</u></col>
+  <col label="c3" value="3">Right now, the buzz about this brand is <u>neutral</u></col>
+  <col label="c4" value="4">Right now, the buzz about this brand is  <u>quite negative</u></col>
+  <col label="c5" value="5">Right now, the buzz about this brand is  <u>very negative</u></col>
+  <col label="c99" value="99">I haven’t heard much about this brand lately</col>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="Pipe_ENTS9a_OPEN"
+  optional="1"
+  where="execute,survey,report">
+  <title>Pipe: ENTS9a_OPEN</title>
+  <row label="r1" value="1">CLIENT</row>
+  <row label="r2" value="2">COMPETITOR 1</row>
+  <row label="r3" value="3">COMPETITOR 2</row>
+  <row label="r4" value="4">COMPETITOR 3</row>
+  <row label="r5" value="5">COMPETITOR 4</row>
+  <row label="r6" value="6">COMPETITOR 5</row>
+</radio>
+
+<suspend/>
+
+<text 
+  label="ENTS9a_OPEN"
+  cond="(ENTS9a.r1.c1 or ENTS9a.r1.c2 or ENTS9a.r1.c3 or ENTS9a.r1.c4 or ENTS9a.r1.c5)"
+  optional="0">
+  <title>What specifically did you see, hear, or read about [pipe: Pipe_ENTS9a_OPEN]?</title>
+  <comment>Please be as specific as possible.</comment>
+  <row label="r1"/>
+  <noanswer label="r2">Not sure</noanswer>
+</text>
+
+<suspend/>
+
+<exec>
+ENTS10.rows.order=ENTS0.rows.order
+</exec>
+
+<suspend/>
+
+<radio 
+  label="ENTS10"
+  shuffle="rows">
+  <title>Based on what you know about the following companies, would you say its best days are ahead or its best days are behind it?</title>
+  <row label="r1" cond="(ENTS0.r1.c2 or ENTS0.r1.c3 or ENTS0.r1.c4 or ENTS0.r1.c5)">CLIENT</row>
+  <row label="r2" cond="(ENTS0.r2.c2 or ENTS0.r2.c3 or ENTS0.r2.c4 or ENTS0.r2.c5)">COMPETITOR 1</row>
+  <row label="r3" cond="(ENTS0.r3.c2 or ENTS0.r3.c3 or ENTS0.r3.c4 or ENTS0.r3.c5)">COMPETITOR 2</row>
+  <row label="r4" cond="(ENTS0.r4.c2 or ENTS0.r4.c3 or ENTS0.r4.c4 or ENTS0.r4.c5)">COMPETITOR 3</row>
+  <row label="r5" cond="(ENTS0.r5.c2 or ENTS0.r5.c3 or ENTS0.r5.c4 or ENTS0.r5.c5)">COMPETITOR 4</row>
+  <col label="c1" value="1">Its best days are ahead</col>
+  <col label="c2" value="2">Its best days are behind it</col>
+  <col label="c98" value="98">Don’t know</col>
+</radio>
+
+<suspend/>
+
+<exec>
+ENTS11.rows.order=ENTS0.rows.order
+</exec>
+
+<suspend/>
+
+<radio 
+  label="ENTS11"
+  shuffle="rows">
+  <title>When thinking about the following companies, which statement below describes whether you use their products or services?</title>
+  <row label="r1" cond="(ENTS0.r1.c2 or ENTS0.r1.c3 or ENTS0.r1.c4 or ENTS0.r1.c5)">CLIENT</row>
+  <row label="r2" cond="(ENTS0.r2.c2 or ENTS0.r2.c3 or ENTS0.r2.c4 or ENTS0.r2.c5)">COMPETITOR 1</row>
+  <row label="r3" cond="(ENTS0.r3.c2 or ENTS0.r3.c3 or ENTS0.r3.c4 or ENTS0.r3.c5)">COMPETITOR 2</row>
+  <row label="r4" cond="(ENTS0.r4.c2 or ENTS0.r4.c3 or ENTS0.r4.c4 or ENTS0.r4.c5)">COMPETITOR 3</row>
+  <row label="r5" cond="(ENTS0.r5.c2 or ENTS0.r5.c3 or ENTS0.r5.c4 or ENTS0.r5.c5)">COMPETITOR 4</row>
+  <col label="c1" value="1">I currently use their products or services</col>
+  <col label="c2" value="2">I used to use their products or services, but don’t now</col>
+  <col label="c3" value="3">I have never used their products or services</col>
+</radio>
+
+<suspend/>
+
+<text 
+  label="INT1"
+  optional="0">
+  <title>For the next few questions, we are going to show you a set of messages. These messages will focus on</title>
+</text>
+
+<suspend/>
+
+<radio 
+  label="Q1">
+  <title>For the message below, please use the different colored markers to select any part of the message to indicate how you feel.</title>
+  <row label="r1" value="1">Dislike</row>
+  <row label="r2" value="2">Like</row>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="Q2"
+  shuffle="rows">
+  <title>How much do you agree or disagree with the following statements about the message listed below?</title>
+  <row label="r1">This is believable</row>
+  <row label="r2">This is relevant to me</row>
+  <row label="r3">This is genuine</row>
+  <row label="r4">This is easy to understand</row>
+  <row label="r5">This is directed at someone like me</row>
+  <col label="c1" value="1">Strongly disagree</col>
+  <col label="c2" value="2">Disagree</col>
+  <col label="c3" value="3">Neither agree nor disagree</col>
+  <col label="c4" value="4">Agree</col>
+  <col label="c5" value="5">Strongly Agree</col>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="Pipe_Q3"
+  optional="1"
+  where="execute,survey,report">
+  <title>Pipe: Q3</title>
+  <row label="r1" value="1">CLIENT</row>
+  <row label="r2" value="2">COMPETITOR 1</row>
+  <row label="r3" value="3">COMPETITOR 2</row>
+  <row label="r4" value="4">COMPETITOR 3</row>
+  <row label="r5" value="5">COMPETITOR 4</row>
+  <row label="r6" value="6">COMPETITOR 5</row>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="Q3">
+  <title>Please indicate how much you trust [pipe: Pipe_Q3] to do what is right, based on what you’ve heard today.</title>
+  <comment><i>Using a 9-point scale where 1 means that you “do not trust them at all” and 9 means that you “trust them a great deal”.</i><br /><br />
+<i>When evaluating [pipe: Pipe_Q3], please think about the company as whole, rather than their specific products and services.</i></comment>
+  <col label="c1" value="1">I do not trust them at all</col>
+  <col label="c2" value="2"/>
+  <col label="c3" value="3"/>
+  <col label="c4" value="4"/>
+  <col label="c5" value="5"/>
+  <col label="c6" value="6"/>
+  <col label="c7" value="7"/>
+  <col label="c8" value="8"/>
+  <col label="c9" value="9">I trust them a great deal</col>
+  <col label="c98" value="98">Don’t Know</col>
+</radio>
+
+<suspend/>
+
+<html label="INT2">Finally, we’d like to the following questions that will be used for classification purposes, only.</html>
+
+<suspend/>
+
+<radio 
+  label="D1">
+  <title>Which of the following best describes your current employment status?</title>
+  <row label="r1" value="1">Employed full-time</row>
+  <row label="r2" value="2">Employed part-time / Contract</row>
+  <row label="r3" value="3">Unemployed</row>
+  <row label="r4" value="4">Retired</row>
+  <row label="r5" value="5">Student</row>
+  <row label="r6" value="6">Homemaker/Caregiver/Stay-at-home parent</row>
+  <row label="r7" randomize="0" value="7">Other</row>
+</radio>
+
+<suspend/>
+
+<checkbox 
+  label="D2"
+  atleast="1">
+  <title>Which of the following areas best describes your current professional area of focus?</title>
+  <row label="r1">Aerospace, Defence &amp; Security</row>
+  <row label="r2">Asset and Wealth Management</row>
+  <row label="r3">Automotive</row>
+  <row label="r4">Banking &amp; Capital Markets</row>
+  <row label="r5">Consumer Markets</row>
+  <row label="r6">Energy, Utilities &amp; Resources</row>
+  <row label="r7">Engineering &amp; Construction</row>
+  <row label="r8">Financial Services</row>
+  <row label="r9">Government &amp; Public Services</row>
+  <row label="r10">Healthcare</row>
+  <row label="r11">Hospitality &amp; Leisure</row>
+  <row label="r12">Industrial Manufacturing</row>
+  <row label="r13">Insurance</row>
+  <row label="r14">News media</row>
+  <row label="r15">Pharmaceuticals &amp; Life Sciences</row>
+  <row label="r16">Technology</row>
+  <row label="r17">Telecommunications</row>
+  <row label="r18">Transportation &amp; Logistics</row>
+  <row label="r19" open="1" openSize="25" randomize="0">Other (SPECIFY)</row>
+  <row label="r99" exclusive="1" randomize="0">None of the above</row>
+</checkbox>
+
+<suspend/>
+
+<radio 
+  label="D3">
+  <title>How would you describe your political beliefs?</title>
+  <row label="r1" value="1">Very conservative</row>
+  <row label="r2" value="2">Somewhat conservative</row>
+  <row label="r3" value="3">Moderate</row>
+  <row label="r4" value="4">Somewhat liberal</row>
+  <row label="r5" value="5">Very liberal</row>
+  <row label="r6" randomize="0" value="6">Other</row>
+  <row label="r7" randomize="0" value="7">Prefer not to answer</row>
+</radio>
+
+<suspend/>
+
+<number 
+  label="QC2"
+  optional="0"
+  size="4"
+  verify="range(1900,2022)">
+  <title>In what year were you born?</title>
+  <row label="r1"/>
+</number>
+
+<suspend/>
+
+<radio 
+  label="DQC2"
+  where="execute,survey,report">
+  <title>HIDDEN RECODE for QC2</title>
+  <exec>
+x = 2022 - QC2.val
+y=int(S2.val-x)
+if y in range (-2,3):
+  DQC2.val=DQC2.r1.index
+else:
+  DQC2.val=DQC2.r2.index
+  </exec>
+
+  <row label="r1" value="1">(2022-S2) is +/- 2 of QC2 or equal</row>
+  <row label="r2" value="2">(2022-S2) is more than +/- 2 of QC</row>
+</radio>
+
+<suspend/>
+
+<html label="Info5">Those are all the questions we have for you today. Thank you for completing our survey.</html>
+
+<suspend/>
+</survey>

@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<survey alt="ETM Study" autosave="0" builder:wizardCompleted="1" builderCompatible="1" compat="147" course5i:release="1.0.3" extraVariables="source,record,ipAddress,decLang,list,userAgent" fir="on" html:showNumber="0" mobile="compat" mobileDevices="smartphone,tablet,desktop" name="Survey" setup="term,decLang,quota,time" ss:disableBackButton="1" ss:enableNavigation="1" ss:hideProgressBar="0" state="testing">
+    <samplesources default="0">
+        <samplesource list="0">
+            <title>Open Survey</title>
+            <invalid>You are missing information in the URL. Please verify the URL with the original invite</invalid>
+            <completed>It seems you have already entered this survey.</completed>
+            <exit cond="terminated">Thank you for taking our survey.</exit>
+            <exit cond="qualified">Thank you for taking our survey. Your efforts are greatly appreciated!</exit>
+            <exit cond="overquota">Thank you for taking our survey.</exit>
+        </samplesource>
+    </samplesources>
+    <suspend/>
+    <radio label="QS0_CONSENT">
+        <title>The survey data collected will be used for research purposes only, and all responses you provide are voluntary, anonymous and will be processed in aggregate to assist us and our client in understanding audiences like you. All information collected and processed will be done in accordance with local and international data protection laws.
+</title>
+        <comment>Based on the information above, do you agree to participate?</comment>
+        <row label="r1">Yes</row>
+        <row label="r2">No</row>
+    </radio>
+    <suspend/>
+    <radio label="QS1">
+        <title>What is your gender?</title>
+        <comment>&lt;i&gt;Please select one.&lt;/i&gt;</comment>
+        <row label="r1">Man</row>
+        <row label="r2">Woman</row>
+        <row label="r3">Non-binary</row>
+        <row label="r4" open="1" openSize="25" randomize="0">Prefer to self-describe</row>
+        <row label="r99" randomize="0">Prefer not to answer</row>
+    </radio>
+    <suspend/>
+    <number label="QS2" optional="0" size="3" verify="range(1,100)">
+        <title>How old are you?</title>
+        <comment>Please type your age in the box below.</comment>
+        <row label="r1">years</row>
+        <row exclusive="1" label="r99" randomize="0">Prefer not to answer</row>
+    </number>
+    <suspend/>
+    <radio label="hQS2A">
+        <title><span style="display:none;"></span></title>
+        <row label="r1">0-17</row>
+        <row label="r2">18-24</row>
+        <row label="r3">25-34</row>
+        <row label="r4">35-44</row>
+        <row label="r5">45-54 </row>
+        <row label="r6">55-64</row>
+        <row label="r7">65 or more</row>
+    </radio>
+    <suspend/>
+    <radio label="QS3_US">
+        <title>What state do you live in?</title>
+        <row label="r1">Placeholder</row>
+        <row label="r54">Other</row>
+        <row label="r98">I do not live in the U.S.</row>
+        <row label="r99">Prefer not to answer</row>
+    </radio>
+    <suspend/>
+    <radio label="hQS3a_US">
+        <title><span style="display:none;"></span></title>
+        <row label="r1">Northeast: CT, ME, MA, NH, RI, VT, NJ, NY, PA</row>
+        <row label="r2">Midwest:  IL, IN, MI, OH, WI, IA, KS, MN, MO, NE, ND, SD</row>
+        <row label="r3">South:  DE, DC, FL, GA, MD, NC, SC, VA, WV, AL, KY, MS, TN, AR, LA, OK, TX</row>
+        <row label="r4">West:  AZ, CO, ID, MT, NV, NM, UT, WY, AK, CA, HI, OR, WA</row>
+    </radio>
+    <suspend/>
+    <radio label="QS4_US">
+        <title>What is the last grade in school you completed?</title>
+        <row label="r1">Grade school or less</row>
+        <row label="r2">Some high school</row>
+        <row label="r3">Graduated high school</row>
+        <row label="r4">Vocational school/ Technical school</row>
+        <row label="r5">Some college</row>
+        <row label="r6">Graduated college</row>
+        <row label="r7">Post-graduate degree (e.g. MA, MBA, LLD, PhD)</row>
+        <row label="r99">Prefer not to answer</row>
+    </radio>
+    <suspend/>
+    <radio label="QS5_US">
+        <title>Thinking about your annual household income in 2021, which of the following categories best describes your total household income that year?</title>
+        <row label="r1">Under $10,000</row>
+        <row label="r2">$10,000 - $24,999</row>
+        <row label="r3">$25,000 - $39,999</row>
+        <row label="r4">$40,000 - $49,999</row>
+        <row label="r5">$50,000 - $59,999</row>
+        <row label="r6">$60,000 - $74,999</row>
+        <row label="r7">$75,000 - $82,499 </row>
+        <row label="r8">$82,500 - $99,999 </row>
+        <row label="r9">$100,000 - $109,999</row>
+        <row label="r10">$110,000 - $119,999</row>
+        <row label="r11">$120,000 or more </row>
+        <row label="r98" randomize="0">Don&apos;t Know</row>
+        <row label="r99" randomize="0">Prefer not to answer</row>
+    </radio>
+    <suspend/>
+    <radio label="QS6">
+        <title>How often do you follow public policy matters in the news?</title>
+        <row label="r1">Nearly every day or every day</row>
+        <row label="r2">Several times a week </row>
+        <row label="r3">Once a week</row>
+        <row label="r4">I do not focus on public policy matters</row>
+        <row label="r99">Prefer not to answer</row>
+    </radio>
+    <suspend/>
+    <radio label="QS7">
+        <title>How often do you follow business news and information?</title>
+        <row label="r1">Nearly every day or every day</row>
+        <row label="r2">Several times a week </row>
+        <row label="r3">Once a week</row>
+        <row label="r4">Less than once a week</row>
+        <row label="r99">Prefer not to answer</row>
+    </radio>
+    <suspend/>
+    <radio label="QS9">
+        <title>Do you consider yourself to be of Hispanic or Latino/a/x origin?</title>
+        <comment>&lt;i&gt;Please select one response.&lt;/i&gt;</comment>
+        <row label="r1">Yes</row>
+        <row label="r2">No</row>
+        <row label="r99">Prefer not to answer</row>
+    </radio>
+    <suspend/>
+    <checkbox atleast="1" label="QS8">
+        <title>Which of the following best describes your racial background?</title>
+        <comment>&lt;i&gt;Please select all that apply.&lt;/i&gt;</comment>
+        <row label="r1">White or Caucasian</row>
+        <row label="r2">Black or African American</row>
+        <row label="r3">Asian or Asian American</row>
+        <row label="r4">Native Hawaiian or Other Pacific Islander</row>
+        <row label="r5">Indigenous American or Indigenous Alaskan</row>
+        <row label="r6">Middle Eastern or North African</row>
+        <row label="r7" open="1" openSize="25" randomize="0">Prefer to self-describe, specify:</row>
+        <row exclusive="1" label="r99" randomize="0">Prefer not to answer</row>
+    </checkbox>
+    <suspend/>
+    <radio label="hQS9a">
+        <title><span style="display:none;"></span></title>
+        <row label="r1">NH-White </row>
+        <row label="r2">NH-Black</row>
+        <row label="r3">Hispanic</row>
+        <row label="r4">NH-Asian </row>
+        <row label="r5">NH-Other </row>
+        <row label="r6">Prefer not to answer</row>
+    </radio>
+    <suspend/>
+    <checkbox atleast="1" label="hQS9b">
+        <title><span style="display:none;"></span></title>
+        <row label="r1">Multiracial</row>
+        <row label="r2">Non-Multiracial </row>
+    </checkbox>
+    <suspend/>
+    <radio label="QENTS0" shuffle="rows">
+        <title>How familiar are you with the following [COMPANIES OR BRANDS]?</title>
+        <row label="r1">CLIENT</row>
+        <row label="r2">COMPETITOR 1</row>
+        <row label="r3">COMPETITOR 2</row>
+        <row label="r4">COMPETITOR 3</row>
+        <row label="r5">COMPETITOR 4</row>
+        <row label="r6">COMPETITOR  5</row>
+        <col label="c1" value="1">Not at all familiar</col>
+        <col label="c2" value="2">Slightly familiar  (I have heard the name but not much else)</col>
+        <col label="c3" value="3">Moderately familiar</col>
+        <col label="c4" value="4">Very familiar</col>
+        <col label="c5" value="5">Extremely familiar</col>
+    </radio>
+    <suspend/>
+    <text label="QENTS0a" optional="0">
+        <title>What words or phrases come to mind when you think about ?</title>
+    </text>
+    <suspend/>
+    <radio label="QENTS1" shuffle="rows">
+        <title>Please indicate how much you trust the following [COMPANIES OR BRANDS] to do what is right, using a 9-point scale where one means that you &quot;do not trust them at all&quot; and nine means that you &quot;trust them a great deal&quot;.</title>
+        <row label="r1">CLIENT</row>
+        <row label="r2">COMPETITOR 1</row>
+        <row label="r3">COMPETITOR 2</row>
+        <row label="r4">COMPETITOR 3</row>
+        <row label="r5">COMPETITOR 4</row>
+        <row label="r6">COMPETITOR  5</row>
+        <col label="c1" value="1">Do not trust them at all</col>
+        <col label="c2" value="2"/>
+        <col label="c3" value="3"/>
+        <col label="c4" value="4"/>
+        <col label="c5" value="5"/>
+        <col label="c6" value="6"/>
+        <col label="c7" value="7"/>
+        <col label="c8" value="8"/>
+        <col label="c9" value="9">Trust them a great deal</col>
+        <col label="c98" value="98">Don&apos;t Know</col>
+    </radio>
+    <suspend/>
+    <text label="QENTS1a" optional="0">
+        <title>You rated your trust in CLIENT as [PIPE-IN ENTS1/row1 RESPONSE]. Why do you trust [CLIENT] to do what is right? </title>
+    </text>
+    <suspend/>
+    <text label="QENTS1b" optional="0">
+        <title>You rated your trust in CLIENT as [PIPE-IN ENTS1/row1 RESPONSE]. Why do you not trust [CLIENT] to do what is right? </title>
+    </text>
+    <suspend/>
+    <radio label="QENTS2" shuffle="rows">
+        <title>How much do you agree or disagree that the following [COMPANIES OR BRANDS] are  &lt;b&gt;good at what they do&lt;/b&gt;?</title>
+        <row label="r1">CLIENT</row>
+        <row label="r2">COMPETITOR 1</row>
+        <row label="r3">COMPETITOR 2</row>
+        <row label="r4">COMPETITOR 3</row>
+        <row label="r5">COMPETITOR 4</row>
+        <row label="r6">COMPETITOR 5</row>
+        <col label="c1" value="1">Totally disagree</col>
+        <col label="c2" value="2"/>
+        <col label="c3" value="3"/>
+        <col label="c4" value="4">Neither agree nor disagree</col>
+        <col label="c5" value="5"/>
+        <col label="c6" value="6"/>
+        <col label="c7" value="7">Totally agree</col>
+        <col label="c98" value="98">Don&#8217;t know enough to say</col>
+    </radio>
+    <suspend/>
+    <radio label="QENTS3" shuffle="rows">
+        <title>How much do you agree or disagree that the following [COMPANIES OR BRANDS] are  &lt;b&gt;honest&lt;/b&gt;?</title>
+        <row label="r1">CLIENT</row>
+        <row label="r2">COMPETITOR 1</row>
+        <row label="r3">COMPETITOR 2</row>
+        <row label="r4">COMPETITOR 3</row>
+        <row label="r5">COMPETITOR 4</row>
+        <row label="r6">COMPETITOR 5</row>
+        <col label="c1" value="1">Totally disagree</col>
+        <col label="c2" value="2"/>
+        <col label="c3" value="3"/>
+        <col label="c4" value="4">Neither agree nor disagree</col>
+        <col label="c5" value="5"/>
+        <col label="c6" value="6"/>
+        <col label="c7" value="7">Totally agree</col>
+        <col label="c98" value="98">Don&#8217;t know enough to say</col>
+    </radio>
+    <suspend/>
+    <radio label="QENTS4" shuffle="rows">
+        <title>How much do you agree or disagree that the following [COMPANIES OR BRANDS] are &lt;b&gt;keeping their promises&lt;/b&gt;?</title>
+        <row label="r1">CLIENT</row>
+        <row label="r2">COMPETITOR 1</row>
+        <row label="r3">COMPETITOR 2</row>
+        <row label="r4">COMPETITOR 3</row>
+        <row label="r5">COMPETITOR 4</row>
+        <row label="r6">COMPETITOR 5</row>
+        <col label="c1" value="1">Totally disagree</col>
+        <col label="c2" value="2"/>
+        <col label="c3" value="3"/>
+        <col label="c4" value="4">Neither agree nor disagree</col>
+        <col label="c5" value="5"/>
+        <col label="c6" value="6"/>
+        <col label="c7" value="7">Totally agree</col>
+        <col label="c98" value="98">Don&#8217;t know enough to say</col>
+    </radio>
+    <suspend/>
+    <radio label="QENTS5" shuffle="rows">
+        <title>How much do you agree or disagree that the following [COMPANIES OR BRANDS] are  &lt;b&gt;trying hard to have a positive impact on society&lt;/b&gt;?</title>
+        <row label="r1">CLIENT</row>
+        <row label="r2">COMPETITOR 1</row>
+        <row label="r3">COMPETITOR 2</row>
+        <row label="r4">COMPETITOR 3</row>
+        <row label="r5">COMPETITOR 4</row>
+        <row label="r6">COMPETITOR 5</row>
+        <col label="c1" value="1">Totally disagree</col>
+        <col label="c2" value="2"/>
+        <col label="c3" value="3"/>
+        <col label="c4" value="4">Neither agree nor disagree</col>
+        <col label="c5" value="5"/>
+        <col label="c6" value="6"/>
+        <col label="c7" value="7">Totally agree</col>
+        <col label="c98" value="98">Don&#8217;t know enough to say</col>
+    </radio>
+    <suspend/>
+    <radio label="QENTS6" shuffle="rows">
+        <title>How much do you agree or disagree that the following [COMPANIES OR BRANDS] are &lt;b&gt;a good fit with who you are as a person&lt;/b&gt;?</title>
+        <row label="r1">CLIENT</row>
+        <row label="r2">COMPETITOR 1</row>
+        <row label="r3">COMPETITOR 2</row>
+        <row label="r4">COMPETITOR 3</row>
+        <row label="r5">COMPETITOR 4</row>
+        <row label="r6">COMPETITOR 5</row>
+        <col label="c1" value="1">Totally disagree</col>
+        <col label="c2" value="2"/>
+        <col label="c3" value="3"/>
+        <col label="c4" value="4">Neither agree nor disagree</col>
+        <col label="c5" value="5"/>
+        <col label="c6" value="6"/>
+        <col label="c7" value="7">Totally agree</col>
+        <col label="c98" value="98">Don&#8217;t know enough to say</col>
+    </radio>
+    <suspend/>
+    <html label="Info4">Now we would like to focus in more detail about how specific companies in [&lt;b&gt;MARKET&lt;/b&gt;] perform on a set of specific behaviors.</html>
+    <suspend/>
+    <radio label="QENTS7_BRAND">
+        <title>How much do you agree or disagree about the following statements about ?</title>
+        <comment>Please use a 7-point scale where 1 means that you &#8216;strongly disagree&#8217; and 7 means that you &#8216;strongly agree&#8217;.</comment>
+        <row label="r1">&lt;b&gt;Delivers high quality products or services&lt;/b&gt;</row>
+        <row label="r2">Creates products and services that put consumer safety first</row>
+        <row label="r3">Innovates and adapts to what people really need today</row>
+        <row label="r4">&lt;b&gt;Does what is right by its customers&lt;/b&gt;</row>
+        <row label="r5">Does what is right by its employees</row>
+        <row label="r6">Consistently behaves in an ethical way</row>
+        <row label="r7">&lt;b&gt;Is truthful and transparent in its communication&lt;/b&gt;</row>
+        <row label="r8">Gives value for money</row>
+        <row label="r9">Keeps its promises, even when something goes wrong   </row>
+        <row label="r10">&lt;b&gt;Champions values &amp; beliefs that matter that matter to me&lt;/b&gt;</row>
+        <row label="r11">Cares more about people than profit  </row>
+        <row label="r12">Does what it takes to have a positive impact on the environment  </row>
+        <row label="r13">Is relevant to my culture and my interests</row>
+        <row label="r14">Creates stories and experiences that are worth my time</row>
+        <row label="r15">Is a brand I would defend</row>
+        <col label="c1" value="1">I strongly disagree</col>
+        <col label="c2" value="2"/>
+        <col label="c3" value="3"/>
+        <col label="c4" value="4"/>
+        <col label="c5" value="5"/>
+        <col label="c6" value="6"/>
+        <col label="c7" value="7">I strongly agree</col>
+        <col label="c99" value="99">Don&#8217;t know enough to tell </col>
+    </radio>
+    <suspend/>
+    <radio label="QENTS8" shuffle="rows">
+        <title>How likely is it that you would recommend the following companies to a friend or colleague?</title>
+        <row label="r1">CLIENT</row>
+        <row label="r2">COMPETITOR 1</row>
+        <row label="r3">COMPETITOR 2</row>
+        <row label="r4">COMPETITOR 3</row>
+        <row label="r5">COMPETITOR 4</row>
+        <col label="c0" value="0">Not at all likely</col>
+        <col label="c1" value="1">1</col>
+        <col label="c2" value="2">2</col>
+        <col label="c3" value="3">3</col>
+        <col label="c4" value="4">4</col>
+        <col label="c5" value="5">5</col>
+        <col label="c6" value="6">6</col>
+        <col label="c7" value="7">7</col>
+        <col label="c8" value="8">8</col>
+        <col label="c9" value="9">9</col>
+        <col label="c10" value="10">Extremely Likely</col>
+    </radio>
+    <suspend/>
+    <radio label="hQENTS8">
+        <title><span style="display:none;"></span></title>
+        <row label="r1">PROMOTERS </row>
+        <row label="r2">PASSIVES</row>
+        <row label="r3">DETRACTORS </row>
+    </radio>
+    <suspend/>
+    <radio label="QENTS9" shuffle="rows">
+        <title>Have you read, heard or seen anything in the news about the following companies and was the news positive, negative or neutral?</title>
+        <row label="r1">CLIENT</row>
+        <row label="r2">COMPETITOR 1</row>
+        <row label="r3">COMPETITOR 2</row>
+        <row label="r4">COMPETITOR 3</row>
+        <row label="r5">COMPETITOR 4</row>
+        <col label="c1" value="1">Yes, and the news was &lt;b&gt;positive&lt;/b&gt;</col>
+        <col label="c2" value="2">Yes, and the news was &lt;b&gt;negative&lt;/b&gt;</col>
+        <col label="c3" value="3">Yes, and the news was &lt;b&gt;neutral&lt;/b&gt;</col>
+        <col label="c4" value="4">No, I did not read, see or hear any news</col>
+        <col label="c98" value="98">Don&#8217;t know</col>
+    </radio>
+    <suspend/>
+    <text label="QENTS9_OPEN" optional="0">
+        <title>What specifically did you see, hear, or read about [CLIENT]? </title>
+        <comment>Please be as specific as possible.</comment>
+        <row label="r1"/>
+        <row exclusive="1" label="r2" randomize="0">Not sure</row>
+    </text>
+    <suspend/>
+    <radio label="QENTS9a" shuffle="rows">
+        <title>Which of the following statements best describes the buzz about the following brands right now? </title>
+        <comment>By &#8220;buzz&#8221; we mean what you are hearing about the brand in the news, on social media, or in conversations.</comment>
+        <row label="r1">CLIENT</row>
+        <row label="r2">COMPETITOR 1</row>
+        <row label="r3">COMPETITOR 2</row>
+        <row label="r4">COMPETITOR 3</row>
+        <row label="r5">COMPETITOR 4</row>
+        <col label="c1" value="1">Right now, the buzz about this brand is  &lt;u&gt;very positive&lt;/u&gt;</col>
+        <col label="c2" value="2">Right now, the buzz about this brand is &lt;u&gt;quite positive&lt;/u&gt;</col>
+        <col label="c3" value="3">Right now, the buzz about this brand is &lt;u&gt;neutral&lt;/u&gt;</col>
+        <col label="c4" value="4">Right now, the buzz about this brand is  &lt;u&gt;quite negative&lt;/u&gt;</col>
+        <col label="c5" value="5">Right now, the buzz about this brand is  &lt;u&gt;very negative&lt;/u&gt;</col>
+        <col label="c99" value="99">I haven&#8217;t heard much about this brand lately</col>
+    </radio>
+    <suspend/>
+    <text label="QENTS9a_OPEN" optional="0">
+        <title>What specifically did you see, hear, or read about ?</title>
+        <comment>Please be as specific as possible.</comment>
+        <row label="r1"/>
+        <row exclusive="1" label="r2" randomize="0">Not sure</row>
+    </text>
+    <suspend/>
+    <radio label="QENTS10" shuffle="rows">
+        <title>Based on what you know about the following companies, would you say its best days are ahead or its best days are behind it?</title>
+        <row label="r1">CLIENT</row>
+        <row label="r2">COMPETITOR 1</row>
+        <row label="r3">COMPETITOR 2</row>
+        <row label="r4">COMPETITOR 3</row>
+        <row label="r5">COMPETITOR 4</row>
+        <col label="c1" value="1">Its best days are ahead</col>
+        <col label="c2" value="2">Its best days are behind it</col>
+        <col label="c98" value="98">Don&#8217;t know</col>
+    </radio>
+    <suspend/>
+    <radio label="QENTS11" shuffle="rows">
+        <title>When thinking about the following companies, which statement below describes whether you use their products or services?</title>
+        <row label="r1">CLIENT</row>
+        <row label="r2">COMPETITOR 1</row>
+        <row label="r3">COMPETITOR 2</row>
+        <row label="r4">COMPETITOR 3</row>
+        <row label="r5">COMPETITOR 4</row>
+        <col label="c1" value="1">I currently use their products or services</col>
+        <col label="c2" value="2">I used to use their products or services, but don&#8217;t now</col>
+        <col label="c3" value="3">I have never used their products or services</col>
+    </radio>
+    <suspend/>
+    <text label="INT1" optional="0">
+        <title>For the next few questions, we are going to show you a set of messages. These messages will focus on [INSERT FOCUS OF MESSAGE TESTING]. </title>
+    </text>
+    <suspend/>
+    <radio label="Q1">
+        <title>For the message below, please use the different colored markers to select any part of the message to indicate how you feel. </title>
+        <row label="r1">Dislike</row>
+        <row label="r2">Like</row>
+    </radio>
+    <suspend/>
+    <radio label="Q2" shuffle="rows">
+        <title>How much do you agree or disagree with the following statements about the message listed below?</title>
+        <row label="r1">This is believable</row>
+        <row label="r2">This is relevant to me</row>
+        <row label="r3">This is genuine</row>
+        <row label="r4">This is easy to understand</row>
+        <row label="r5">This is directed&#160;at&#160;someone like me</row>
+        <col label="c1" value="1">Strongly disagree</col>
+        <col label="c2" value="2">Disagree</col>
+        <col label="c3" value="3">Neither agree nor disagree</col>
+        <col label="c4" value="4">Agree</col>
+        <col label="c5" value="5">Strongly Agree</col>
+    </radio>
+    <suspend/>
+    <radio label="Q3">
+        <title>Please indicate how much you trust [CLIENT] to do what is right, based on what you&#8217;ve heard today.
+</title>
+        <comment>&lt;i&gt;Using a 9-point scale where 1 means that you &#8220;do not trust them at all&#8221; and 9 means that you &#8220;trust them a great deal&#8221;.&lt;/i&gt;&lt;br&gt;&lt;br/&gt;
+&lt;i&gt;When evaluating , please think about the company as whole, rather than their specific products and services.&lt;/i&gt;</comment>
+        <row label="r1">Placeholder</row>
+        <col label="c1" value="1">I do not trust them at all</col>
+        <col label="c2" value="2"/>
+        <col label="c3" value="3"/>
+        <col label="c4" value="4"/>
+        <col label="c5" value="5"/>
+        <col label="c6" value="6"/>
+        <col label="c7" value="7"/>
+        <col label="c8" value="8"/>
+        <col label="c9" value="9">I trust them a great deal</col>
+        <col label="c98" value="98">Don&#8217;t Know</col>
+    </radio>
+    <suspend/>
+    <html label="INT2">Finally, we&#8217;d like to the following questions that will be used for classification purposes, only.
+</html>
+    <suspend/>
+    <radio label="QD1">
+        <title>Which of the following best describes your current employment status?</title>
+        <row label="r1">Employed full-time</row>
+        <row label="r2">Employed part-time / Contract</row>
+        <row label="r3">Unemployed</row>
+        <row label="r4">Retired</row>
+        <row label="r5">Student</row>
+        <row label="r6">Homemaker/Caregiver/Stay-at-home parent</row>
+        <row label="r7">Other</row>
+    </radio>
+    <suspend/>
+    <checkbox atleast="1" label="QD2">
+        <title>Which of the following areas best describes your current professional area of focus?</title>
+        <row label="r1">Aerospace, Defence &amp; Security</row>
+        <row label="r2">Asset and Wealth Management</row>
+        <row label="r3">Automotive</row>
+        <row label="r4">Banking &amp; Capital Markets</row>
+        <row label="r5">Consumer Markets</row>
+        <row label="r6">Energy, Utilities &amp; Resources</row>
+        <row label="r7">Engineering &amp; Construction</row>
+        <row label="r8">Financial Services</row>
+        <row label="r9">Government &amp; Public Services</row>
+        <row label="r10">Healthcare</row>
+        <row label="r11">Hospitality &amp; Leisure</row>
+        <row label="r12">Industrial Manufacturing</row>
+        <row label="r13">Insurance</row>
+        <row label="r14">News media</row>
+        <row label="r15">Pharmaceuticals &amp; Life Sciences</row>
+        <row label="r16">Technology</row>
+        <row label="r17">Telecommunications</row>
+        <row label="r18">Transportation &amp; Logistics</row>
+        <row label="r19" open="1" openSize="25" randomize="0">Other (SPECIFY)</row>
+        <row exclusive="1" label="r99" randomize="0">None of the above</row>
+    </checkbox>
+    <suspend/>
+    <radio label="QD3">
+        <title>How would you describe your political beliefs?</title>
+        <row label="r1">Very conservative</row>
+        <row label="r2">Somewhat conservative</row>
+        <row label="r3">Moderate</row>
+        <row label="r4">Somewhat liberal</row>
+        <row label="r5">Very liberal</row>
+        <row label="r6">Other</row>
+        <row label="r7">Prefer not to answer</row>
+    </radio>
+    <suspend/>
+    <number label="QC2" optional="0" size="4" verify="range(1900,2022)">
+        <title>In what year were you born?</title>
+        <row label="r1"/>
+    </number>
+    <suspend/>
+    <radio label="hDQC2">
+        <title/>
+        <row label="r1">(2022-S2) is +/- 2 of QC2 or equal</row>
+        <row label="r2">(2022-S2) is more than +/- 2 of QC</row>
+    </radio>
+    <suspend/>
+    <html label="Info5">Those are all the questions we have for you today. Thank you for completing our survey.</html>
+    <suspend/>
+</survey>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <exec>
+if ((ENTS8.c10.any or ENTS8.c9.any) and (ENTS11.c1.any)):
+	Hid_ENTS8.r1.val=1
+if ((ENTS8.c8.any or ENTS8.c7.any) and (ENTS11.c1.any)):
+	Hid_ENTS8.r2.val=1
+if ((ENTS8.c0.any or ENTS8.c1.any or ENTS8.c2.any or ENTS8.c3.any or ENTS8.c4.any or ENTS8.c5.any or ENTS8.c6.any) and (ENTS11.c1.any)):
+	Hid_ENTS8.r3.val=1
+  </exec>

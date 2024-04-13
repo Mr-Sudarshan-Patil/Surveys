@@ -1,0 +1,35 @@
+<survey xmlns:builder="http://decipherinc.com/builder" xmlns:ss="http://decipherinc.com/ss" xmlns:html="http://decipherinc.com/html" alt="Sudarshan_Test_Validation" autosave="0" builder:wizardCompleted="1" builderCompatible="1" compat="150" delphi="1" extraVariables="source,record,decLang,list,userAgent" fir="on" html:showNumber="0" mobile="compat" mobileDevices="smartphone,tablet,desktop" name="Survey" secure="1" setup="term,decLang,quota,time" ss:disableBackButton="1" ss:enableNavigation="1" ss:hideProgressBar="0" state="testing" id="survey">
+  <samplesources default="0" id="O8U5o">
+    <samplesource list="0" id="Q1LTq">
+      <title id="VutI4">Open Survey</title>
+      <invalid id="tAT6s">You are missing information in the URL. Please verify the URL with the original invite.</invalid>
+      <completed id="FkXAf">It seems you have already entered this survey.</completed>
+      <exit cond="terminated" id="Ms5nX">Thank you for taking our survey.</exit>
+      <exit cond="qualified" id="p0xcX">Thank you for taking our survey. Your efforts are greatly appreciated!</exit>
+      <exit cond="overquota" id="yd7V0">Thank you for taking our survey.</exit>
+    </samplesource>
+  </samplesources>
+  <suspend id="FB8L0"/>
+  <number label="A1" optional="0" size="10" id="C1wZS">
+    <title id="q3FMv">For how long have you been in your current CPO role at your current company?</title>
+    <col label="c1" verify="range(01,50)" id="GUy5y">Years</col>
+    <col label="c2" optional="1" verify="range(1,11)" id="GAjsX">Months</col>
+  </number>
+  <suspend id="NLjDl"/>
+  <radio label="A2" id="BAM8Z">
+    <title id="U92ok">Is your current role your first CPO role?</title>
+    <col label="c1" id="AtvfE">Yes</col>
+    <col label="c2" id="ERp5W">No</col>
+  </radio>
+  <suspend id="xDOs6"/>
+  <number label="A3" cond="(A2.c2)" optional="0" size="10" id="os94x">
+    <title id="ZJRJF">For how long have you been in a CPO role?</title>
+    <comment id="A5ZF1">While answering this, please include your experience as a CPO in your current company as well as ALL your previous CPO roles at your previous companies</comment>
+    <validate id="VKCUl">
+if A3.c1.val le A1.c1.val and A3.c2.val le A1.c2.val:
+    error("Your TOTAL CPO experience cannot be less than or equal to your CPO experience in your current role since you mentioned you have held CPO roles in multiple companies")
+  </validate>
+    <col label="c1" verify="range(01,50)" id="Wl3Ad">Years</col>
+    <col label="c2" optional="1" verify="range(1,11)" id="tMqVi">Months</col>
+  </number>
+</survey>

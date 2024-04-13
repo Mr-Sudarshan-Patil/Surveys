@@ -1,0 +1,379 @@
+<note>------------------------------------------------------------------[Main Section]---------------------------------------------------------------------------------</note>
+<suspend/>
+
+<exec>
+ENTS1.rows.order=ENTS0.rows.order
+</exec>
+
+<suspend/>
+
+<radio 
+  label="ENTS1"
+  shuffle="rows">
+  <title>Please indicate how much you trust the following brands of insurance companies to do what is right, using a 9-point scale where one means that you "do not trust them at all" and nine means that you "trust them a great deal".</title>
+  <col label="c1" value="1">Do not trust them at all</col>
+  <col label="c2" value="2"/>
+  <col label="c3" value="3"/>
+  <col label="c4" value="4"/>
+  <col label="c5" value="5"/>
+  <col label="c6" value="6"/>
+  <col label="c7" value="7"/>
+  <col label="c8" value="8"/>
+  <col label="c9" value="9">Trust them a great deal</col>
+  <col label="c98" randomize="0" value="98">Don't Know</col>
+  <row label="r1" cond="(ENTS0.r1.c2 or ENTS0.r1.c3 or ENTS0.r1.c4 or ENTS0.r1.c5)">Liberty Mutual</row>
+  <row label="r2" cond="(ENTS0.r2.c2 or ENTS0.r2.c3 or ENTS0.r2.c4 or ENTS0.r2.c5)">USAA</row>
+  <row label="r3" cond="(ENTS0.r3.c2 or ENTS0.r3.c3 or ENTS0.r3.c4 or ENTS0.r3.c5)">Progressive</row>
+  <row label="r4" cond="(ENTS0.r4.c2 or ENTS0.r4.c3 or ENTS0.r4.c4 or ENTS0.r4.c5)">Geico</row>
+  <row label="r5" cond="(ENTS0.r5.c2 or ENTS0.r5.c3 or ENTS0.r5.c4 or ENTS0.r5.c5)">State Farm</row>
+  <row label="r6" cond="(ENTS0.r6.c2 or ENTS0.r6.c3 or ENTS0.r6.c4 or ENTS0.r6.c5)">Allstate</row>
+</radio>
+
+<suspend/>
+
+<exec>
+ENTS2.rows.order=ENTS0.rows.order
+</exec>
+
+<suspend/>
+
+<radio 
+  label="ENTS2"
+  shuffle="rows">
+  <title>How much do you agree or disagree that the following brands of insurance companies are <b>good at what they do</b>?</title>
+  <col label="c1" value="1">Totally disagree</col>
+  <col label="c2" value="2"/>
+  <col label="c3" value="3"/>
+  <col label="c4" value="4">Neither agree nor disagree</col>
+  <col label="c5" value="5"/>
+  <col label="c6" value="6"/>
+  <col label="c7" value="7">Totally agree</col>
+  <col label="c98" randomize="0" value="98">Don’t know enough to say</col>
+  <row label="r1" cond="(ENTS0.r1.c2 or ENTS0.r1.c3 or ENTS0.r1.c4 or ENTS0.r1.c5)">Liberty Mutual</row>
+  <row label="r2" cond="(ENTS0.r2.c2 or ENTS0.r2.c3 or ENTS0.r2.c4 or ENTS0.r2.c5)">USAA</row>
+  <row label="r3" cond="(ENTS0.r3.c2 or ENTS0.r3.c3 or ENTS0.r3.c4 or ENTS0.r3.c5)">Progressive</row>
+  <row label="r4" cond="(ENTS0.r4.c2 or ENTS0.r4.c3 or ENTS0.r4.c4 or ENTS0.r4.c5)">Geico</row>
+  <row label="r5" cond="(ENTS0.r5.c2 or ENTS0.r5.c3 or ENTS0.r5.c4 or ENTS0.r5.c5)">State Farm</row>
+  <row label="r6" cond="(ENTS0.r6.c2 or ENTS0.r6.c3 or ENTS0.r6.c4 or ENTS0.r6.c5)">Allstate</row>
+</radio>
+
+<suspend/>
+
+<exec>
+ENTS3.rows.order=ENTS0.rows.order
+</exec>
+
+<suspend/>
+
+<radio 
+  label="ENTS3"
+  shuffle="rows">
+  <title>How much do you agree or disagree that the following brands of insurance companies are <b>honest</b>?</title>
+  <col label="c1" value="1">Totally disagree</col>
+  <col label="c2" value="2"/>
+  <col label="c3" value="3"/>
+  <col label="c4" value="4">Neither agree nor disagree</col>
+  <col label="c5" value="5"/>
+  <col label="c6" value="6"/>
+  <col label="c7" value="7">Totally agree</col>
+  <col label="c98" randomize="0" value="98">Don’t know enough to say</col>
+  <row label="r1" cond="(ENTS0.r1.c2 or ENTS0.r1.c3 or ENTS0.r1.c4 or ENTS0.r1.c5)">Liberty Mutual</row>
+  <row label="r2" cond="(ENTS0.r2.c2 or ENTS0.r2.c3 or ENTS0.r2.c4 or ENTS0.r2.c5)">USAA</row>
+  <row label="r3" cond="(ENTS0.r3.c2 or ENTS0.r3.c3 or ENTS0.r3.c4 or ENTS0.r3.c5)">Progressive</row>
+  <row label="r4" cond="(ENTS0.r4.c2 or ENTS0.r4.c3 or ENTS0.r4.c4 or ENTS0.r4.c5)">Geico</row>
+  <row label="r5" cond="(ENTS0.r5.c2 or ENTS0.r5.c3 or ENTS0.r5.c4 or ENTS0.r5.c5)">State Farm</row>
+  <row label="r6" cond="(ENTS0.r6.c2 or ENTS0.r6.c3 or ENTS0.r6.c4 or ENTS0.r6.c5)">Allstate</row>
+</radio>
+
+<suspend/>
+
+<exec>
+ENTS4.rows.order=ENTS0.rows.order
+</exec>
+
+<suspend/>
+
+<radio 
+  label="ENTS4"
+  shuffle="rows">
+  <title>How much do you agree or disagree that the following brands of insurance companies are <b>keeping their promises?</b></title>
+  <col label="c1" value="1">Totally disagree</col>
+  <col label="c2" value="2"/>
+  <col label="c3" value="3"/>
+  <col label="c4" value="4">Neither agree nor disagree</col>
+  <col label="c5" value="5"/>
+  <col label="c6" value="6"/>
+  <col label="c7" value="7">Totally agree</col>
+  <col label="c98" randomize="0" value="98">Don’t know enough to say</col>
+  <row label="r1" cond="(ENTS0.r1.c2 or ENTS0.r1.c3 or ENTS0.r1.c4 or ENTS0.r1.c5)">Liberty Mutual</row>
+  <row label="r2" cond="(ENTS0.r2.c2 or ENTS0.r2.c3 or ENTS0.r2.c4 or ENTS0.r2.c5)">USAA</row>
+  <row label="r3" cond="(ENTS0.r3.c2 or ENTS0.r3.c3 or ENTS0.r3.c4 or ENTS0.r3.c5)">Progressive</row>
+  <row label="r4" cond="(ENTS0.r4.c2 or ENTS0.r4.c3 or ENTS0.r4.c4 or ENTS0.r4.c5)">Geico</row>
+  <row label="r5" cond="(ENTS0.r5.c2 or ENTS0.r5.c3 or ENTS0.r5.c4 or ENTS0.r5.c5)">State Farm</row>
+  <row label="r6" cond="(ENTS0.r6.c2 or ENTS0.r6.c3 or ENTS0.r6.c4 or ENTS0.r6.c5)">Allstate</row>
+</radio>
+
+<suspend/>
+
+<exec>
+ENTS5.rows.order=ENTS0.rows.order
+</exec>
+
+<suspend/>
+
+<radio 
+  label="ENTS5"
+  shuffle="rows">
+  <title>How much do you agree or disagree that the following brands of insurance companies are <b>trying hard to have a positive impact on society?</b></title>
+  <col label="c1" value="1">Totally disagree</col>
+  <col label="c2" value="2"/>
+  <col label="c3" value="3"/>
+  <col label="c4" value="4">Neither agree nor disagree</col>
+  <col label="c5" value="5"/>
+  <col label="c6" value="6"/>
+  <col label="c7" value="7">Totally agree</col>
+  <col label="c98" randomize="0" value="98">Don’t know enough to say</col>
+  <row label="r1" cond="(ENTS0.r1.c2 or ENTS0.r1.c3 or ENTS0.r1.c4 or ENTS0.r1.c5)">Liberty Mutual</row>
+  <row label="r2" cond="(ENTS0.r2.c2 or ENTS0.r2.c3 or ENTS0.r2.c4 or ENTS0.r2.c5)">USAA</row>
+  <row label="r3" cond="(ENTS0.r3.c2 or ENTS0.r3.c3 or ENTS0.r3.c4 or ENTS0.r3.c5)">Progressive</row>
+  <row label="r4" cond="(ENTS0.r4.c2 or ENTS0.r4.c3 or ENTS0.r4.c4 or ENTS0.r4.c5)">Geico</row>
+  <row label="r5" cond="(ENTS0.r5.c2 or ENTS0.r5.c3 or ENTS0.r5.c4 or ENTS0.r5.c5)">State Farm</row>
+  <row label="r6" cond="(ENTS0.r6.c2 or ENTS0.r6.c3 or ENTS0.r6.c4 or ENTS0.r6.c5)">Allstate</row>
+</radio>
+
+<suspend/>
+
+<exec>
+ENTS6.rows.order=ENTS0.rows.order
+</exec>
+
+<suspend/>
+
+<radio 
+  label="ENTS6"
+  shuffle="rows">
+  <title>How much do you agree or disagree that the following brands of insurance companies are <b>a good fit with who you are as a person?</b></title>
+  <col label="c1" value="1">Totally disagree</col>
+  <col label="c2" value="2"/>
+  <col label="c3" value="3"/>
+  <col label="c4" value="4">Neither agree nor disagree</col>
+  <col label="c5" value="5"/>
+  <col label="c6" value="6"/>
+  <col label="c7" value="7">Totally agree</col>
+  <col label="c98" randomize="0" value="98">Don’t know enough to say</col>
+  <row label="r1" cond="(ENTS0.r1.c2 or ENTS0.r1.c3 or ENTS0.r1.c4 or ENTS0.r1.c5)">Liberty Mutual</row>
+  <row label="r2" cond="(ENTS0.r2.c2 or ENTS0.r2.c3 or ENTS0.r2.c4 or ENTS0.r2.c5)">USAA</row>
+  <row label="r3" cond="(ENTS0.r3.c2 or ENTS0.r3.c3 or ENTS0.r3.c4 or ENTS0.r3.c5)">Progressive</row>
+  <row label="r4" cond="(ENTS0.r4.c2 or ENTS0.r4.c3 or ENTS0.r4.c4 or ENTS0.r4.c5)">Geico</row>
+  <row label="r5" cond="(ENTS0.r5.c2 or ENTS0.r5.c3 or ENTS0.r5.c4 or ENTS0.r5.c5)">State Farm</row>
+  <row label="r6" cond="(ENTS0.r6.c2 or ENTS0.r6.c3 or ENTS0.r6.c4 or ENTS0.r6.c5)">Allstate</row>
+</radio>
+
+<suspend/>
+
+<exec>
+ENTS11.rows.order=ENTS0.rows.order
+</exec>
+
+<suspend/>
+
+<radio 
+  label="ENTS11"
+  shuffle="rows">
+  <title>Do you currently, or have you ever had, an insurance policy with any of the following brands of insurance companies?</title>
+  <col label="c1" value="1">I currently have an insurance policy with this company</col>
+  <col label="c2" value="2">I have had an insurance policy with this company in the past, but don’t now</col>
+  <col label="c3" value="3">I have never had an insurance policy with this company</col>
+  <row label="r1" cond="(ENTS0.r1.c2 or ENTS0.r1.c3 or ENTS0.r1.c4 or ENTS0.r1.c5)">Liberty Mutual</row>
+  <row label="r2" cond="(ENTS0.r2.c2 or ENTS0.r2.c3 or ENTS0.r2.c4 or ENTS0.r2.c5)">USAA</row>
+  <row label="r3" cond="(ENTS0.r3.c2 or ENTS0.r3.c3 or ENTS0.r3.c4 or ENTS0.r3.c5)">Progressive</row>
+  <row label="r4" cond="(ENTS0.r4.c2 or ENTS0.r4.c3 or ENTS0.r4.c4 or ENTS0.r4.c5)">Geico</row>
+  <row label="r5" cond="(ENTS0.r5.c2 or ENTS0.r5.c3 or ENTS0.r5.c4 or ENTS0.r5.c5)">State Farm</row>
+  <row label="r6" cond="(ENTS0.r6.c2 or ENTS0.r6.c3 or ENTS0.r6.c4 or ENTS0.r6.c5)">Allstate</row>
+</radio>
+
+<suspend/>
+
+<exec>
+ENTS8.rows.order=ENTS0.rows.order
+</exec>
+
+<suspend/>
+
+<radio 
+  label="ENTS8"
+  shuffle="rows">
+  <title>Do you currently, or have you ever had, an insurance policy with any of the following brands of insurance companies?</title>
+  <col label="c0" value="0">Not at all likely</col>
+  <col label="c1" value="1"/>
+  <col label="c2" value="2"/>
+  <col label="c3" value="3"/>
+  <col label="c4" value="4"/>
+  <col label="c5" value="5"/>
+  <col label="c6" value="6"/>
+  <col label="c7" value="7"/>
+  <col label="c8" value="8"/>
+  <col label="c9" value="9"/>
+  <col label="c10" value="10">Extremely Likely</col>
+  <row label="r1" cond="(ENTS0.r1.c2 or ENTS0.r1.c3 or ENTS0.r1.c4 or ENTS0.r1.c5)">Liberty Mutual</row>
+  <row label="r2" cond="(ENTS0.r2.c2 or ENTS0.r2.c3 or ENTS0.r2.c4 or ENTS0.r2.c5)">USAA</row>
+  <row label="r3" cond="(ENTS0.r3.c2 or ENTS0.r3.c3 or ENTS0.r3.c4 or ENTS0.r3.c5)">Progressive</row>
+  <row label="r4" cond="(ENTS0.r4.c2 or ENTS0.r4.c3 or ENTS0.r4.c4 or ENTS0.r4.c5)">Geico</row>
+  <row label="r5" cond="(ENTS0.r5.c2 or ENTS0.r5.c3 or ENTS0.r5.c4 or ENTS0.r5.c5)">State Farm</row>
+  <row label="r6" cond="(ENTS0.r6.c2 or ENTS0.r6.c3 or ENTS0.r6.c4 or ENTS0.r6.c5)">Allstate</row>
+</radio>
+
+<suspend/>
+
+<checkbox 
+  label="Hid_ENTS8"
+  optional="1"
+  where="execute,survey,report">
+  <title>HIDDEN QUESTION: NPS RECODE</title>
+  <exec>
+if ((ENTS8.c10.any or ENTS8.c9.any) and (ENTS11.c1.any)):
+	Hid_ENTS8.r1.val=1
+if ((ENTS8.c8.any or ENTS8.c7.any) and (ENTS11.c1.any)):
+	Hid_ENTS8.r2.val=1
+if ((ENTS8.c0.any or ENTS8.c1.any or ENTS8.c2.any or ENTS8.c3.any or ENTS8.c4.any or ENTS8.c5.any or ENTS8.c6.any) and (ENTS11.c1.any)):
+	Hid_ENTS8.r3.val=1
+  </exec>
+
+  <row label="r1">PROMOTERS (ENTS8/10 or 9 AND USERS of brand and corporation at ENTS11/1)</row>
+  <row label="r2">PASSIVES (ENTS8/8 or 7 AND USERS of brand and corporation at ENTS11/1)</row>
+  <row label="r3">DETRACTORS (ENTS8/0-6 AND USERS of brand and corporation at ENTS11/1)</row>
+</checkbox>
+
+<suspend/>
+
+<exec>
+ENTS10.rows.order=ENTS0.rows.order
+</exec>
+
+<suspend/>
+
+<radio 
+  label="ENTS10"
+  shuffle="rows">
+  <title>Based on what you know about the following insurance companies, would you say its best days are ahead or its best days are behind it?</title>
+  <row label="r1" cond="(ENTS0.r1.c2 or ENTS0.r1.c3 or ENTS0.r1.c4 or ENTS0.r1.c5)">Liberty Mutual</row>
+  <row label="r2" cond="(ENTS0.r2.c2 or ENTS0.r2.c3 or ENTS0.r2.c4 or ENTS0.r2.c5)">USAA</row>
+  <row label="r3" cond="(ENTS0.r3.c2 or ENTS0.r3.c3 or ENTS0.r3.c4 or ENTS0.r3.c5)">Progressive</row>
+  <row label="r4" cond="(ENTS0.r4.c2 or ENTS0.r4.c3 or ENTS0.r4.c4 or ENTS0.r4.c5)">Geico</row>
+  <row label="r5" cond="(ENTS0.r5.c2 or ENTS0.r5.c3 or ENTS0.r5.c4 or ENTS0.r5.c5)">State Farm</row>
+  <row label="r6" cond="(ENTS0.r6.c2 or ENTS0.r6.c3 or ENTS0.r6.c4 or ENTS0.r6.c5)">Allstate</row>
+  <col label="c1" value="1">Its best days are ahead</col>
+  <col label="c2" value="2">Its best days are behind it</col>
+  <col label="c98" randomize="0" value="98">Don’t know</col>
+</radio>
+
+<suspend/>
+
+<exec>
+ENTS9.rows.order=ENTS0.rows.order
+</exec>
+
+<suspend/>
+
+<radio 
+  label="ENTS9"
+  shuffle="rows">
+  <title>Have you read, heard or seen anything in the news about the following companies and was the news positive, negative or neutral?</title>
+  <row label="r1" cond="(ENTS0.r1.c2 or ENTS0.r1.c3 or ENTS0.r1.c4 or ENTS0.r1.c5)">Liberty Mutual</row>
+  <row label="r2" cond="(ENTS0.r2.c2 or ENTS0.r2.c3 or ENTS0.r2.c4 or ENTS0.r2.c5)">USAA</row>
+  <row label="r3" cond="(ENTS0.r3.c2 or ENTS0.r3.c3 or ENTS0.r3.c4 or ENTS0.r3.c5)">Progressive</row>
+  <row label="r4" cond="(ENTS0.r4.c2 or ENTS0.r4.c3 or ENTS0.r4.c4 or ENTS0.r4.c5)">Geico</row>
+  <row label="r5" cond="(ENTS0.r5.c2 or ENTS0.r5.c3 or ENTS0.r5.c4 or ENTS0.r5.c5)">State Farm</row>
+  <row label="r6" cond="(ENTS0.r6.c2 or ENTS0.r6.c3 or ENTS0.r6.c4 or ENTS0.r6.c5)">Allstate</row>
+  <col label="c1" value="1">Yes, and the news was <b>positive</b></col>
+  <col label="c2" value="2">Yes, and the news was <b>negative</b></col>
+  <col label="c3" value="3">Yes, and the news was <b>neutral</b></col>
+  <col label="c4" value="4">No, I did not read, see or hear any news</col>
+  <col label="c98" randomize="0" value="98">Don’t know</col>
+</radio>
+
+<suspend/>
+
+<text 
+  label="ENTS9_OPEN"
+  cond="(ENTS9.r1.c1 or ENTS9.r1.c2 or ENTS9.r1.c3)"
+  optional="0">
+  <title>What specifically did you see, hear, or read about Liberty Mutual?</title>
+  <comment>Please be as specific as possible.</comment>
+  <noanswer label="r2">Not sure</noanswer>
+</text>
+
+<suspend/>
+
+<html label="INT2">Finally, we would like to ask you the following questions which will be used for classification purposes, only.</html>
+
+<suspend/>
+
+<radio 
+  label="D1">
+  <title>Which of the following best describes your current employment status?</title>
+  <row label="r1" value="1">Employed full-time</row>
+  <row label="r2" value="2">Employed part-time / Contract</row>
+  <row label="r3" value="3">Unemployed</row>
+  <row label="r4" value="4">Retired</row>
+  <row label="r5" value="5">Student</row>
+  <row label="r6" value="6">Homemaker/Caregiver/Stay-at-home parent</row>
+  <row label="r7" randomize="0" value="7">Other</row>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="D2"
+  cond="(D1.r1 or D1.r2)">
+  <title>Which of the following areas best describes your current professional area of focus?</title>
+  <row label="r1" value="1">Aerospace, Defence Security</row>
+  <row label="r2" value="2">Asset and Wealth Management</row>
+  <row label="r3" value="3">Automotive</row>
+  <row label="r4" value="4">Banking Capital Markets</row>
+  <row label="r5" value="5">Consumer Markets</row>
+  <row label="r6" value="6">Energy, Utilities Resources</row>
+  <row label="r7" value="7">Engineering Construction</row>
+  <row label="r8" value="8">Financial Services</row>
+  <row label="r9" value="9">Government Public Services</row>
+  <row label="r10" value="10">Healthcare</row>
+  <row label="r11" value="11">Hospitality Leisure</row>
+  <row label="r12" value="12">Industrial Manufacturing</row>
+  <row label="r13" value="13">Insurance (auto or home)</row>
+  <row label="r20" value="20">Other type of insurance (e.g., medical, life, etc.)</row>
+  <row label="r14" value="14">News media</row>
+  <row label="r15" value="15">Pharmaceuticals Life Sciences</row>
+  <row label="r16" value="16">Technology</row>
+  <row label="r17" value="17">Telecommunications</row>
+  <row label="r18" value="18">Transportation Logistics</row>
+  <row label="r95" open="1" openSize="25" randomize="0" value="95">Other (SPECIFY)</row>
+  <row label="r99" randomize="0" value="99">None of the above</row>
+</radio>
+
+<suspend/>
+
+<number 
+  label="QC2"
+  optional="0"
+  size="3"
+  verify="range(1900,2022)">
+  <title>In what year were you born?</title>
+</number>
+
+<suspend/>
+
+<radio 
+  label="DQC2"
+  optional="1"
+  where="execute,survey,report">
+  <title>HIDDEN RECODE for QC2</title>
+  <row label="r1" value="1">(2022-S2) is +/- 2 of QC2 or equal</row>
+  <row label="r2" value="2">(2022-S2) is more than +/- 2 of QC</row>
+</radio>
+
+<suspend/>
+
+<html label="Info1">Those are all the questions we have for you today. Thank you for completing our survey.</html>
+
+<suspend/>
+</survey>

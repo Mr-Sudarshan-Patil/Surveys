@@ -1,0 +1,1853 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<survey 
+  alt="NY5461 Delta ETM Benchmark"
+  autosaveKey="cint,psid"
+  builder:wizardCompleted="1"
+  builderCompatible="1"
+  compat="140"
+  delphi="1"
+  displayOnError="all"
+  extraVariables="ipAddress,source,record,decLang,list,userAgent,country"
+  featurephoneNotAllowedMessage="The device you are using is not allowed to take this survey."
+  fir="on"
+  firSize="30px"
+  html:showNumber="0"
+  mobile="compat"
+  mobileDevices="smartphone,tablet,desktop"
+  name="Survey"
+  setup="term,decLang,quota,time"
+  ss:disableBackButton="1"
+  ss:enableNavigation="1"
+  ss:hideProgressBar="0"
+  ss:listDisplay="0"
+  ss:logoAlt=""
+  ss:logoFile="selfserve/53b/logo_60248ba2ad35d8d57346000004747005.png"
+  ss:logoPosition="left"
+  ss:showBackButton="0"
+  state="testing">
+
+<res label="S11_error">It seems you have taken <b>${S9.ival}</b> commercial airline in the past 12 months but you entered more no of flights as compared to the total no of flights, we request you to please provide correct infotmation.</res>
+<samplesources default="0">
+  <samplesource list="0">
+    <title>Open Survey</title>
+    <invalid>You are missing information in the URL. Please verify the URL with the original invite.</invalid>
+    <completed>It seems you have already entered this survey.</completed>
+    <exit cond="terminated">Thank you for taking our survey.</exit>
+    <exit cond="qualified">Thank you for taking our survey. Your efforts are greatly appreciated!</exit>
+    <exit cond="overquota">Thank you for taking our survey.</exit>
+  </samplesource>
+</samplesources>
+
+<suspend/>
+
+<style cond="1" name="survey.respview.footer.support"><![CDATA[
+<div style="text-align: center;" data-mce-style="text-align: center;"><a href="https://www.focusvision.com/privacy-statement/" target="_blank" rel="noopener" data-mce-href="https://www.focusvision.com/privacy-statement/" data-mce-selected="inline-boundary">﻿Privacy Policy</a> - <a href="/support" target="_blank" rel="noopener" data-mce-href="/support">Help</a></div>
+]]></style>
+<style mode="after" name="respview.client.css"><![CDATA[
+<style>
+textarea {
+width: 400px;
+min-width: 200px;
+}
+
+.survey-q-instructions-text {
+    font-family: arial, helvetica, sans-serif;
+    font-weight: normal;
+    color: rgb(132, 137, 140);
+    font-size: 13px;
+    font-style: italic;
+}
+.survey-q-question-text {
+        color: gray;
+    font-size: 1.5rem;
+    font-family: Arial,sans-serif;
+    margin-bottom: .333em;
+    line-height: normal;
+    font-weight: bold;
+	font-style: italic;
+}
+.survey-button, .button {
+    background-color: rgb(147, 141, 153);
+    border-color: rgb(239, 239, 239);
+    font-size: 15px;
+    color: rgb(255, 255, 255);
+    -moz-border-radius-bottomleft: 12px;
+    border-bottom-left-radius: 12px;
+    -moz-border-radius-bottomright: 12px;
+    border-bottom-right-radius: 12px;
+    -moz-border-radius-topleft: 12px;
+    border-top-left-radius: 12px;
+    -moz-border-radius-topright: 12px;
+    border-top-right-radius: 12px;
+    font-weight: bold;
+    font-style: italic;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-width: 1px;
+    border-style: solid;
+    box-shadow: 1px 1px 9px 0px#7F7F7F;
+    -webkit-box-shadow: 1px 1px 9px 0px#7F7F7F;
+    -moz-box-shadow: 1px 1px 9px 0px#7F7F7F;
+    font-family: arial, helvetica, sans-serif;
+}
+.survey-button:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(61, 62, 87);
+    border-color: ;
+}
+</style>
+]]></style>
+<style mode="after" name="respview.client.js"><![CDATA[
+<script>
+$ (document).bind('dragstart copy paste',function(e) {
+    e.preventDefault(); return false; 
+});   
+$ (document).on("contextmenu1",function(){
+       return false;
+    });
+$ (document).keyup(function(e){
+  if(e.keyCode == 42) 
+    {
+e.preventDefault();
+}
+});
+</script>
+]]></style>
+<suspend/>
+
+<exec>
+QVersion.val=QVersion.r1.index
+</exec>
+
+<radio 
+  label="QVersion"
+  optional="1"
+  where="execute,survey,report">
+  <title>Programmer Note: For every live change received, please increase the version here by 1.</title>
+  <row label="r1">Version_1--&gt;Initial Programming</row>
+  <row label="r2">Version_2</row>
+  <row label="r3">Version_3</row>
+  <row label="r4">Version_4</row>
+  <row label="r5">Version_5</row>
+  <row label="r6">Version_6</row>
+  <row label="r7">Version_7</row>
+  <row label="r8">Version_8</row>
+  <row label="r9">Version_9</row>
+  <row label="r10">Version_10</row>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="QInfo"
+  optional="1"
+  ss:listDisplay="1"
+  where="execute,survey,report">
+  <title>Please don't delete this until the scripting of the whole survey is done.</title>
+  <comment>Points to be taken care:</comment>
+  <row label="r1">Capturing of randomization order for the loops/messages in a numeric question</row>
+  <row label="r2">Check whether copy/paste function is being disabled throughout the survey</row>
+  <row label="r3">If a grid is broken into two or more grids, please create a virtual question of the entire option list</row>
+  <row label="r4">Create all quota questions in the study</row>
+  <row label="r5">Make sure textarea/Open End is properly visible in IE</row>
+  <row label="r6">Make sure to change the default samplesource when we have sampling vendor</row>
+</radio>
+
+<suspend/>
+
+<exec>
+# To be placed before all the quota questions and one question above the first quota question
+cells = gv.survey.root.quota.getQuotaCells()
+  
+current, limit, overquota = cells['/Overall/overall']  
+
+p.x1 = current
+p.x2 = limit
+p.x = float(p.x1) / float(p.x2)
+p.x = float(p.x) * 100
+p.half = int(limit) / 2
+print current
+print limit
+print overquota
+print p.x1
+print p.x2
+print p.x
+print p.half
+</exec>
+
+<suspend/>
+
+<quota overquota="noqual" sheet="Overall"/>
+
+<suspend/>
+
+<block label="TestEmail" cond="gv.survey.root.state.live">
+  <alert label="Soft_Launch_Alert" emails="DG.RAI@course5i.com lalit.kapoor@course5i.com zoheb.shaikh@course5i.com aditya.yadav@course5i.com ankur@course5i.com" manager="1" marker="/Overall/overall" sender="lalit.kapoor@course5i.com" threshold="50">
+    <subject>[NY5461 Delta ETM Benchmark] Soft Launch Alert</subject>
+    <body>
+  Hi All,
+
+We have achieved the soft launch Target. Please send feedback form to client. Below are the POC details:
+
+POC Name: Savanna
+
+POC ID: Savanna.Miller@edelmanDXI.com
+
+Thanks,
+
+Programming Team</body></alert></block>
+
+<suspend/>
+
+<note>==========================SECTION 1: SCREENERS ================================</note>
+<suspend/>
+
+<radio 
+  label="S0_CONSENT">
+  <title>Thank you for your interest in our survey! The survey data collected will be used for research purposes only and all responses you provide are voluntary, anonymous, and will be processed in aggregate to assist us and our client in understanding audiences like you. All information collected and processed is done in accordance with local and international data protection laws.<br /><br />Based on the information above, do you agree to participate?</title>
+  <row label="r1" value="1">Yes</row>
+  <row label="r2" value="2">No</row>
+</radio>
+
+<suspend/>
+
+<term label="S0_CONSENT_Term" cond="(S0_CONSENT.r2)">Terminate S0_CONSENT : IF NO SELECTED</term>
+
+<suspend/>
+
+<radio 
+  label="S1">
+  <title>Which of the following best describes your gender?</title>
+  <comment>Please select one.</comment>
+  <row label="r1" value="1">Man</row>
+  <row label="r2" value="2">Woman</row>
+  <row label="r3" value="3">Non-binary or gender fluid</row>
+  <row label="r4" open="1" openSize="25" randomize="0" value="4">Prefer to self-describe</row>
+  <row label="r5" open="1" openSize="25" randomize="0" value="5">A gender not listed here</row>
+  <row label="r99" randomize="0" value="99">Prefer not to answer</row>
+</radio>
+
+<suspend/>
+
+<number 
+  label="S2"
+  optional="0"
+  size="5"
+  ss:listDisplay="1"
+  verify="range(1,100)">
+  <title>What is your age?</title>
+  <comment>Please type your age in the box below.</comment>
+  <noanswer label="r99">Prefer not to answer</noanswer>
+</number>
+
+<suspend/>
+
+<term label="Term_S2" cond="(S2.r99)">TERMINATE S2:TERMINATE IF  "Prefer not to answer" SELECTED</term>
+
+<suspend/>
+
+<radio 
+  label="S2A_RECODE"
+  optional="1"
+  where="execute,survey,report">
+  <title>S2A_RECODE INTO AGE GROUPS</title>
+  <exec>
+ages = ['0-17', '18-24' , '25-34' , '35-44', '45-54', '55-64','65-100' ]
+for index, age in enumerate(ages):
+    if S2.check(age):
+        S2A_RECODE.val = index
+        break
+  </exec>
+
+  <row label="r1" value="1">0-17</row>
+  <row label="r2" value="2">18-24</row>
+  <row label="r3" value="3">25-34</row>
+  <row label="r4" value="4">35-44</row>
+  <row label="r5" value="5">45-54</row>
+  <row label="r6" value="6">55-64</row>
+  <row label="r7" value="7">65 or more</row>
+</radio>
+
+<suspend/>
+
+<term label="Term_S2A_RECODE" cond="(S2A_RECODE.r1) or (S2A_RECODE.r2) or (S2A_RECODE.r7)">Terminate S2A_RECODE: If r1 ,r2 or r7 Selected</term>
+
+<suspend/>
+
+<radio 
+  label="S2B_RECODE"
+  optional="1"
+  where="execute,survey,report">
+  <title>S2B_RECODE INTO GENERATIONS</title>
+  <exec>
+ages = ['25-41', '42-57' , '58-65' ]
+for index, age in enumerate(ages):
+    if S2.check(age):
+        S2B_RECODE.val = index
+        break
+  </exec>
+
+  <row label="r1" value="1">MILLENNIALS</row>
+  <row label="r2" value="2">GEN X</row>
+  <row label="r3" value="3">BOOMERS</row>
+</radio>
+
+<suspend/>
+
+<select 
+  label="S3"
+  ss:listDisplay="1">
+  <title>Which state do you live in?</title>
+  <comment>Please select one.</comment>
+  <choice label="ch1" value="1">Alabama</choice>
+  <choice label="ch2" value="2">Alaska</choice>
+  <choice label="ch3" value="3">Arizona</choice>
+  <choice label="ch4" value="4">Arkansas</choice>
+  <choice label="ch5" value="5">California</choice>
+  <choice label="ch6" value="6">Colorado</choice>
+  <choice label="ch7" value="7">Connecticut</choice>
+  <choice label="ch8" value="8">Delaware</choice>
+  <choice label="ch9" value="9">District of Columbia</choice>
+  <choice label="ch10" value="10">Florida</choice>
+  <choice label="ch11" value="11">Georgia</choice>
+  <choice label="ch12" value="12">Hawaii</choice>
+  <choice label="ch13" value="13">Idaho</choice>
+  <choice label="ch14" value="14">Illinois</choice>
+  <choice label="ch15" value="15">Indiana</choice>
+  <choice label="ch16" value="16">Iowa</choice>
+  <choice label="ch17" value="17">Kansas</choice>
+  <choice label="ch18" value="18">Kentucky</choice>
+  <choice label="ch19" value="19">Louisiana</choice>
+  <choice label="ch20" value="20">Maine</choice>
+  <choice label="ch21" value="21">Maryland</choice>
+  <choice label="ch22" value="22">Massachusetts</choice>
+  <choice label="ch23" value="23">Michigan</choice>
+  <choice label="ch24" value="24">Minnesota</choice>
+  <choice label="ch25" value="25">Mississippi</choice>
+  <choice label="ch26" value="26">Missouri</choice>
+  <choice label="ch27" value="27">Montana</choice>
+  <choice label="ch28" value="28">Nebraska</choice>
+  <choice label="ch29" value="29">Nevada</choice>
+  <choice label="ch30" value="30">New Hampshire</choice>
+  <choice label="ch31" value="31">New Jersey</choice>
+  <choice label="ch32" value="32">New Mexico</choice>
+  <choice label="ch33" value="33">New York</choice>
+  <choice label="ch34" value="34">North Carolina</choice>
+  <choice label="ch35" value="35">North Dakota</choice>
+  <choice label="ch36" value="36">Ohio</choice>
+  <choice label="ch37" value="37">Oklahoma</choice>
+  <choice label="ch38" value="38">Oregon</choice>
+  <choice label="ch39" value="39">Pennsylvania</choice>
+  <choice label="ch40" value="40">Rhode Island</choice>
+  <choice label="ch41" value="41">South Carolina</choice>
+  <choice label="ch42" value="42">South Dakota</choice>
+  <choice label="ch43" value="43">Tennessee</choice>
+  <choice label="ch44" value="44">Texas</choice>
+  <choice label="ch45" value="45">Utah</choice>
+  <choice label="ch46" value="46">Vermont</choice>
+  <choice label="ch47" value="47">Virginia</choice>
+  <choice label="ch48" value="48">Washington</choice>
+  <choice label="ch49" value="49">West Virginia</choice>
+  <choice label="ch50" value="50">Wisconsin</choice>
+  <choice label="ch51" value="51">Wyoming</choice>
+  <noanswer label="r54">Other</noanswer>
+  <noanswer label="r98">I do not live in the U.S.</noanswer>
+  <noanswer label="r99">Prefer not to answer</noanswer>
+</select>
+
+<suspend/>
+
+<term label="Term_S3" cond="S3.r54 or S3.r98 or S3.r99">Term_S3: Terminate if Other or I do not live in the U.S. or Prefer not to answer</term>
+
+<radio 
+  label="S3A_RECODE"
+  optional="1"
+  where="execute,survey,report">
+  <title>S3A_RECODE INTO REGIONS</title>
+  <exec>
+if (S3.ch7 or S3.ch20 or S3.ch22 or S3.ch30 or S3.ch31 or S3.ch33 or S3.ch39 or S3.ch40 or S3.ch46):
+	S3A_RECODE.val=S3A_RECODE.r1.index
+if (S3.ch14 or S3.ch15 or S3.ch16 or S3.ch17 or S3.ch23 or S3.ch24 or S3.ch26 or S3.ch28 or S3.ch35 or S3.ch36 or S3.ch42 or S3.ch50):
+	S3A_RECODE.val=S3A_RECODE.r2.index
+if (S3.ch1 or S3.ch4 or S3.ch8 or S3.ch9 or S3.ch10 or S3.ch11 or S3.ch18 or S3.ch19 or S3.ch21 or S3.ch25 or S3.ch34 or S3.ch37 or S3.ch41 or S3.ch43 or S3.ch44 or S3.ch47 or S3.ch49):
+	S3A_RECODE.val=S3A_RECODE.r3.index
+if (S3.ch2 or S3.ch3 or S3.ch5 or S3.ch6 or S3.ch12 or S3.ch13 or S3.ch27 or S3.ch29 or S3.ch32 or S3.ch38 or S3.ch45 or S3.ch51 or S3.ch48):
+	S3A_RECODE.val=S3A_RECODE.r4.index
+  </exec>
+
+  <row label="r1" value="1">Northeast: CT, ME, MA, NH, RI, VT, NJ, NY, PA</row>
+  <row label="r2" value="2">Midwest: IL, IN, MI, OH, WI, IA, KS, MN, MO, NE, ND, SD</row>
+  <row label="r3" value="3">South: DE, DC, FL, GA, MD, NC, SC, VA, WV, AL, KY, MS, TN, AR, LA, OK, TX</row>
+  <row label="r4" value="4">West: AZ, CO, ID, MT, NV, NM, UT, WY, AK, CA, HI, OR, WA</row>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="S4">
+  <title>What is the last grade in school you completed?</title>
+  <comment>Please select one.</comment>
+  <row label="r1" value="1">Grade school or less</row>
+  <row label="r2" value="2">Some high school</row>
+  <row label="r3" value="3">Graduated high school</row>
+  <row label="r4" value="4">Vocational school/ Technical school</row>
+  <row label="r5" value="5">Some college</row>
+  <row label="r6" value="6">Graduated college</row>
+  <row label="r7" value="7">Post-graduate degree (e.g., MA, MBA, LLD, PhD)</row>
+  <row label="r99" value="99">Prefer not to answer</row>
+</radio>
+
+<suspend/>
+
+<term label="Term_S4" cond="S4.r99">Term_S4: Terminate if Prefer not to answer</term>
+
+<suspend/>
+
+<radio 
+  label="S5">
+  <title>Thinking about your annual household income in 2021, which of the following categories best describes your total household income that year?</title>
+  <comment>Please select one.</comment>
+  <row label="r1" value="1">Under $10,000</row>
+  <row label="r2" value="2">$10,000 - $24,999</row>
+  <row label="r3" value="3">$25,000 - $39,999</row>
+  <row label="r4" value="4">$40,000 - $49,999</row>
+  <row label="r5" value="5">$50,000 - $59,999</row>
+  <row label="r6" value="6">$60,000 - $74,999</row>
+  <row label="r7" value="7">$75,000 - $82,499</row>
+  <row label="r8" value="8">$82,500 - $99,999</row>
+  <row label="r9" value="9">$100,000 - $109,999</row>
+  <row label="r10" value="10">$110,000 - $119,999</row>
+  <row label="r11" value="11">$120,000 or more</row>
+  <row label="r98" randomize="0" value="98">Don't Know</row>
+  <row label="r99" randomize="0" value="99">Prefer not to answer</row>
+</radio>
+
+<suspend/>
+
+<term label="Term_S5" cond="S5.r99">Term_S5: Terminate if Prefer not to answer</term>
+
+<suspend/>
+
+<radio 
+  label="S6">
+  <title>How often do you follow public policy matters in the news?</title>
+  <comment>Please select one.</comment>
+  <row label="r1" value="1">Nearly every day or every day</row>
+  <row label="r2" value="2">Several times a week</row>
+  <row label="r3" value="3">Once a week</row>
+  <row label="r4" value="4">I do not focus on public policy matters</row>
+  <row label="r99" randomize="0" value="99">Prefer not to answer</row>
+</radio>
+
+<suspend/>
+
+<term label="Term_S6" cond="S6.r99">Term_S6: Terminate if Prefer not to answer</term>
+
+<suspend/>
+
+<radio 
+  label="S7">
+  <title>How often do you follow business news and information?</title>
+  <comment>Please select one.</comment>
+  <row label="r1" value="1">Nearly every day or every day</row>
+  <row label="r2" value="2">Several times a week</row>
+  <row label="r3" value="3">Once a week</row>
+  <row label="r4" value="4">Less than once a week</row>
+  <row label="r99" randomize="0" value="99">Prefer not to answer</row>
+</radio>
+
+<suspend/>
+
+<term label="Term_S7" cond="S7.r99">Term_S7: Terminate if Prefer not to answer</term>
+
+<suspend/>
+
+<radio 
+  label="IP_RECODE"
+  optional="1"
+  where="execute,survey,report">
+  <title>Hidden: IP_RECODE</title>
+  <exec>
+if (((S2A_RECODE.r3) and  (S5.r6 or S5.r7 or S5.r8 or S5.r9 or S5.r10 or S5.r11)) or ((S2A_RECODE.r4 or S2A_RECODE.r5 or S2A_RECODE.r6) and (S5.r9 or S5.r10 or S5.r11))) and (S6.r1 or S6.r2) and (S7.r1 or S7.r2) and (S4.r4 or S4.r5 or S4.r6 or S4.r7):
+	IP_RECODE.val=IP_RECODE.r1.index
+else:
+	IP_RECODE.val=IP_RECODE.r2.index
+  </exec>
+
+  <row label="r1">QUALIFY</row>
+  <row label="r2">NOT QUALIFY</row>
+</radio>
+
+<suspend/>
+
+<checkbox 
+  label="S8"
+  atleast="1"
+  shuffle="rows">
+  <title>Do you or any of your close friends or relatives work in any of the following industries (now or in the past)?</title>
+  <comment>Please select all that apply.</comment>
+  <row label="r1">Advertising</row>
+  <row label="r2">Market research / marketing</row>
+  <row label="r3">Public relations</row>
+  <row label="r4">Journalism / TV / Radio / Media</row>
+  <row label="r5">Travel industry</row>
+  <row label="r6">Hospitality</row>
+  <row label="r7">Education</row>
+  <row label="r8">Pharmaceutical industry</row>
+  <row label="r99" exclusive="1" randomize="0">None of the above</row>
+</checkbox>
+
+<suspend/>
+
+<term label="Term_S8" cond="S8.r1 or S8.r2 or S8.r3 or S8.r4 or S8.r5">Term_S8: Terminate if r1 or r2 or r3 or r4 r5</term>
+
+<suspend/>
+
+<number 
+  label="S9"
+  optional="0"
+  size="10"
+  ss:listDisplay="1"
+  ss:postText="flights in the past 12 months"
+  verify="range(1,999)">
+  <title>Approximately how many flights, if any, have you taken on a commercial airline in the past 12 months?</title>
+  <comment>Please enter the total number of flights you have taken. For example, a round-trip would be 2 flights.</comment>
+  <noanswer label="c98">I have not flown in the past 12 months</noanswer>
+  <noanswer label="r99">Can’t remember</noanswer>
+</number>
+
+<suspend/>
+
+<term label="Term_S9" cond="S9.r99">Term_S9: Terminate if Prefer not to answer</term>
+
+<suspend/>
+
+<radio 
+  label="S9_RECODE"
+  optional="1"
+  where="execute,survey,report">
+  <title>S9_RECODE</title>
+  <exec>
+if S9.c98:	S9_RECODE.val=S9_RECODE.r0.index
+if S9.ival==1:	S9_RECODE.val=S9_RECODE.r1.index
+if S9.ival==2:	S9_RECODE.val=S9_RECODE.r2.index
+if S9.ival ge 3 and S9.ival le 5 :	S9_RECODE.val=S9_RECODE.r3.index
+if S9.ival ge 6 and S9.ival le 9 :	S9_RECODE.val=S9_RECODE.r4.index
+if S9.ival ge 10 and S9.ival le 99 :	S9_RECODE.val=S9_RECODE.r5.index
+if S9.ival ge 100:	S9_RECODE.val=S9_RECODE.r6.index
+  </exec>
+
+  <row label="r0" value="0">Not flown in the last 12 months (S9=c98)</row>
+  <row label="r1" value="1">Once in the past year (S9=1)</row>
+  <row label="r2" value="2">Twice in the past year (S9=2)</row>
+  <row label="r3" value="3">3-5 times in the past year (S9=3-5)</row>
+  <row label="r4" value="4">6-9 flights in the past year (S9=6-9)</row>
+  <row label="r5" value="5">10-99 flights in the past year (S9=10-99)</row>
+  <row label="r6" value="6">100+ flights in the past year (S9=100+)</row>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="Flag_S9"
+  optional="1"
+  where="execute,survey,report">
+  <title>Hidden:Flag_S9</title>
+  <exec>
+if S9_RECODE.r6:	Flag_S9.val=Flag_S9.r1.index
+else:	Flag_S9.val=Flag_S9.r2.index
+  </exec>
+
+  <row label="r1" value="1">Flag</row>
+  <row label="r2" value="2">Not Flag</row>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="S10"
+  cond="S9_RECODE.r0">
+  <title>How likely or unlikely is it that you will take a flight in the next 6 months?</title>
+  <row label="r1" value="1">Very unlikely</row>
+  <row label="r2" value="2">Unlikely</row>
+  <row label="r3" value="3">Neither unlikely nor likely</row>
+  <row label="r4" value="4">Likely</row>
+  <row label="r5" value="5">Very Likely</row>
+</radio>
+
+<suspend/>
+
+<term label="Term_S10" cond="S10.r1 or S10.r2 or S10.r3">Term_S10: Terminate if r1 ,r2 or r3</term>
+
+<suspend/>
+
+<number 
+  label="S11"
+  cond="S9.ival ge 1"
+  optional="0"
+  size="10"
+  ss:listDisplay="1"
+  ss:postText="flights for business purposes in the past 12 months"
+  verify="range(0,999)">
+  <title>Of the [pipe:S9] flights you took last year, how many were <strong>for business purposes?</strong></title>
+  <comment>Please enter a number in the box.</comment>
+  <validate>
+if S9.ival lt S11.ival:
+	error(res.S11_error)
+  </validate>
+
+  <noanswer label="r98">I have not flown for business purposes in the past 12 months</noanswer>
+  <noanswer label="r99">Can’t remember</noanswer>
+</number>
+
+<suspend/>
+
+<number 
+  label="S12"
+  cond="S9.ival ge 1"
+  optional="0"
+  size="10"
+  ss:listDisplay="1"
+  ss:postText="international flights in the past 12 months"
+  verify="range(0,999)">
+  <title>Of the [pipe:S9] flights you took last year, how many were international flights? By this we mean flying from one country to another.</title>
+  <comment>Please enter a number in the box.</comment>
+  <validate>
+if S9.ival lt S12.ival:
+	error(res.S11_error)
+  </validate>
+
+  <noanswer label="r98">I have not flown internationally in the past 12 months</noanswer>
+  <noanswer label="r99">Can’t remember</noanswer>
+</number>
+
+<suspend/>
+
+<note>==========================Quota ================================</note>
+<suspend/>
+
+<radio 
+  label="S100"
+  optional="1"
+  where="execute,survey,report">
+  <title>To qualify for the survey </title>
+  <exec>
+if (S0_CONSENT.r1) and (S2A_RECODE.r3 or S2A_RECODE.r4 or S2A_RECODE.r5 or S2A_RECODE.r6) and (S3A_RECODE .r1 or S3A_RECODE.r2 or S3A_RECODE.r3 or S3A_RECODE.r4) and (S4.r4 or S4.r5 or S4.r6 or S4.r7) and (S5.r6 or S5.r7 or S5.r8 or S5.r9 or S5.r10 or S5.r11) and (S6.r1 or S6.r2) and (S7.r1 or S7.r2):
+	S100.val=S100.r1.index
+else:
+	S100.val=S100.r2.index
+  </exec>
+
+  <row label="r1">QUALIFIED</row>
+  <row label="r2">ALL OTHERS</row>
+</radio>
+
+<suspend/>
+
+<quota overquota="noqual" sheet="S100"/>
+
+<suspend/>
+
+<term label="Term_S100" cond="S100.r2" sst="0">Term_S100: Terminate r2 ALL OTHERS</term>
+
+<suspend/>
+
+<html label="Info0">In this section we would like to understand your level of familiarity with some airline companies.</html>
+
+<suspend/>
+
+<define label="ListQ1">
+  <row label="r1">Delta Air Lines</row>
+  <row label="r2">American Airlines</row>
+  <row label="r3">United Airlines</row>
+  <row label="r4">Southwest Airlines</row>
+  <row label="r5">JetBlue Airways</row></define>
+<suspend/>
+
+<radio 
+  label="Q1"
+  shuffle="rows">
+  <title>How familiar are you with the following airline companies?</title>
+  <row label="r1">Delta Air Lines</row>
+  <row label="r2">American Airlines</row>
+  <row label="r3">United Airlines</row>
+  <row label="r4">Southwest Airlines</row>
+  <row label="r5">JetBlue Airways</row>
+  <row label="r6">Spectacle Airlines</row>
+  <col label="c1" value="1">Not at all familiar</col>
+  <col label="c2" value="2">Slightly familiar <br />(I have heard the name but not much else)</col>
+  <col label="c3" value="3">Moderately familiar</col>
+  <col label="c4" value="4">Very familiar</col>
+  <col label="c5" value="5">Extremely familiar</col>
+</radio>
+
+<suspend/>
+
+<term label="Term_Q1" cond="(Q1.r1.c1 or Q1.r6.c2 or Q1.r6.c3 or Q1.r6.c4 or Q1.r6.c5)">Term at Q1</term>
+
+<suspend/>
+
+<exec>
+Q2.rows.order = Q1.rows.order
+Q3.rows.order = Q1.rows.order
+Q5.rows.order = Q1.rows.order
+Q6.rows.order = Q1.rows.order
+Q8.rows.order = Q1.rows.order
+Q9.rows.order = Q1.rows.order
+Q10.rows.order = Q1.rows.order
+Q11.rows.order = Q1.rows.order
+Q12.rows.order = Q1.rows.order
+Q13.rows.order = Q1.rows.order
+</exec>
+
+<suspend/>
+
+<radio 
+  label="Q2"
+  rowCond="Q1[row].c2 or Q1[row].c3 or Q1[row].c4 or Q1[row].c5"
+  shuffle="rows">
+  <title>Are you currently, or have you ever been, employed by any of the following companies listed below?</title>
+  <insert source="ListQ1"/>
+  <col label="c1" value="1">I am currently an employee of this company</col>
+  <col label="c2" value="2">I have previously been an employee of this company but am not anymore</col>
+  <col label="c3" value="3">I have never been an employee of this company</col>
+</radio>
+
+<suspend/>
+
+<term label="Term_Q2" cond="Q2.r1.c1">Term at Q2</term>
+
+<suspend/>
+
+<radio 
+  label="Q3"
+  rowCond="Q1[row].c2 or Q1[row].c3 or Q1[row].c4 or Q1[row].c5"
+  shuffle="rows">
+  <title>When thinking about the following airline companies, which statement below describes whether you use their services?</title>
+  <insert source="ListQ1"/>
+  <col label="c1" value="1">I currently use their services</col>
+  <col label="c2" value="2">I used to use their services, but don’t now</col>
+  <col label="c3" value="3">I have never used their services</col>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="Q4"
+  cond="(Q3.c1.any or Q3.c2.any)"
+  rowCond="Q3[row].c1 or Q3[row].c2">
+  <title>And when was the last time you flew with each of the following companies?</title>
+  <insert source="ListQ1"/>
+  <col label="c1" value="1">Within the past week</col>
+  <col label="c2" value="2">Over a week ago but within the past month</col>
+  <col label="c3" value="3">Between 1 and 3 months ago</col>
+  <col label="c4" value="4">Between 3 and 6 months ago</col>
+  <col label="c5" value="5">Between 6-12 months ago</col>
+  <col label="c6" value="6">Between 1-3 years ago</col>
+  <col label="c7" value="7">Over 3 years ago</col>
+  <col label="c99" value="99">Can’t remember</col>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="Q5"
+  rowCond="Q1[row].c2 or Q1[row].c3 or Q1[row].c4 or Q1[row].c5"
+  shuffle="rows">
+  <title>Next time you need to take a flight, how likely or unlikely are you to consider travelling with each of the following companies?</title>
+  <comment>Please select one response for each company.</comment>
+  <insert source="ListQ1"/>
+  <col label="c1" value="1">Would definitely not consider this company at all</col>
+  <col label="c2" value="2">Would probably not consider this company</col>
+  <col label="c3" value="3">Neutral</col>
+  <col label="c4" value="4">Would probably consider this company</col>
+  <col label="c5" value="5">Would definitely consider this company</col>
+  <col label="c99" value="99">Don’t Know</col>
+</radio>
+
+<suspend/>
+
+<note>************************************************************[SECTION 3: ENTS AND TRUST DIMENSIONS]*****************************************************************************</note>
+<suspend/>
+
+<html label="info1" where="survey">Thanks for your answers so far. In this next section we would like to understand how you feel about different brands, particularly thinking about airlines.</html>
+
+<suspend/>
+
+<radio 
+  label="Q6"
+  rowCond="Q1[row].c2 or Q1[row].c3 or Q1[row].c4 or Q1[row].c5"
+  shuffle="rows">
+  <title>Please indicate how much you trust the following airlines to do what is right.</title>
+  <comment>Please use a 9-point scale where one means that you "do not trust them at all" and nine means that you "trust them a great deal."</comment>
+  <insert source="ListQ1"/>
+  <col label="c1" value="1">1 - Do not trust them at all</col>
+  <col label="c2" value="2">2</col>
+  <col label="c3" value="3">3</col>
+  <col label="c4" value="4">4</col>
+  <col label="c5" value="5">5</col>
+  <col label="c6" value="6">6</col>
+  <col label="c7" value="7">7</col>
+  <col label="c8" value="8">8</col>
+  <col label="c9" value="9">9 - Trust them a great deal</col>
+  <col label="c98" value="98">Don't Know</col>
+</radio>
+
+<suspend/>
+
+<quota overquota="noqual" sheet="LF_Q7"/>
+
+<suspend/>
+
+<checkbox 
+  label="Hid_Q7"
+  optional="1"
+  where="execute,survey,report">
+  <title>Hidden : LF for Q16</title>
+  <exec>
+for eachRow in Hid_Q7.rows:
+	if hasMarker('/LF_Q7/Q6%s' %eachRow.label):
+		Hid_Q7[eachRow].val = 1
+  </exec>
+
+  <row label="r1">Delta Air Lines</row>
+  <row label="r2">American Airlines</row>
+  <row label="r3">United Airlines</row>
+  <row label="r4">Southwest Airlines</row>
+  <row label="r5">JetBlue Airways</row>
+</checkbox>
+
+<suspend/>
+
+<exec>
+if Hid_Q7.r1.val == 1:
+	HidQ7.val = Q6.r1.val
+</exec>
+
+<radio 
+  label="HidQ7"
+  optional="1"
+  where="execute,survey,report">
+  <title>Hidden for Q7 pipe:</title>
+  <row label="r1" value="1">1 - Do not trust them at all</row>
+  <row label="r2" value="2">2</row>
+  <row label="r3" value="3">3</row>
+  <row label="r4" value="4">4</row>
+  <row label="r5" value="5">5</row>
+  <row label="r6" value="6">6</row>
+  <row label="r7" value="7">7</row>
+  <row label="r8" value="8">8</row>
+  <row label="r9" value="9">9 - Trust them a great deal</row>
+  <row label="r98" value="98">Don't Know</row>
+</radio>
+
+<suspend/>
+
+<textarea 
+  label="Q7"
+  optional="0"
+  size="25"
+  ss:listDisplay="1">
+  <title>You rated your trust in <b>Delta Air Lines</b> as <b>[pipe: HidQ7]</b>. Why is this?</title>
+  <comment>Please write your answer below, giving as much detail as possible.</comment>
+</textarea>
+
+<suspend/>
+
+<radio 
+  label="HidQ7a"
+  optional="1"
+  where="execute,survey,report">
+  <title>Hidden for second competitor rating at Q7a:</title>
+  <exec>
+for eachRow in range(2,6):
+	if Hid_Q7.attr('r'+str(eachRow)).val == 1:
+		print eachRow
+		HidQ7a.val = Q6.attr('r'+str(eachRow)).val
+  </exec>
+
+  <row label="r1" value="1">1 - Do not trust them at all</row>
+  <row label="r2" value="2">2</row>
+  <row label="r3" value="3">3</row>
+  <row label="r4" value="4">4</row>
+  <row label="r5" value="5">5</row>
+  <row label="r6" value="6">6</row>
+  <row label="r7" value="7">7</row>
+  <row label="r8" value="8">8</row>
+  <row label="r9" value="9">9 - Trust them a great deal</row>
+  <row label="r98" value="98">Don't Know</row>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="HidQ7aBrand"
+  optional="1"
+  where="execute,survey,report">
+  <title>Hidden for second competitor brand at Q7a:</title>
+  <exec>
+for eachRow in range(2,6):
+	if Hid_Q7.attr('r'+str(eachRow)).val == 1:
+		print eachRow
+		HidQ7aBrand.val = HidQ7aBrand.attr('r'+str(eachRow)).index
+  </exec>
+
+  <row label="r1">Delta Air Lines</row>
+  <row label="r2">American Airlines</row>
+  <row label="r3">United Airlines</row>
+  <row label="r4">Southwest Airlines</row>
+  <row label="r5">JetBlue Airways</row>
+</radio>
+
+<suspend/>
+
+<textarea 
+  label="Q7a"
+  cond="HidQ7aBrand.any and HidQ7a.any"
+  optional="0"
+  size="25"
+  ss:listDisplay="1">
+  <title>You rated your trust in <b>[pipe: HidQ7aBrand]</b> as <b>[pipe: HidQ7a]</b>. Why is this?</title>
+  <comment>Please write your answer below, giving as much detail as possible.</comment>
+</textarea>
+
+<suspend/>
+
+<radio 
+  label="Q8"
+  rowCond="Q1[row].c2 or Q1[row].c3 or Q1[row].c4 or Q1[row].c5"
+  shuffle="rows">
+  <title>How much do you agree or disagree that the following companies are <b>good at what they do</b>?</title>
+  <comment>Please use a scale from 1 to 7 where 1 means that you ‘strongly disagree’ and 7 means that you ‘strongly agree.’</comment>
+  <insert source="ListQ1"/>
+  <col label="c1" value="1">1 - Strongly disagree</col>
+  <col label="c2" value="2">2</col>
+  <col label="c3" value="3">3</col>
+  <col label="c4" value="4">Neither agree nor disagree</col>
+  <col label="c5" value="5">5</col>
+  <col label="c6" value="6">6</col>
+  <col label="c7" value="7">7 - Strongly agree</col>
+  <col label="c98" value="98">Don’t know enough to say</col>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="Q9"
+  rowCond="Q1[row].c2 or Q1[row].c3 or Q1[row].c4 or Q1[row].c5"
+  shuffle="rows">
+  <title>How much do you agree or disagree that the following companies are <b>honest</b>?</title>
+  <comment>Please use a scale from 1 to 7 where 1 means that you ‘strongly disagree’ and 7 means that you ‘strongly agree.’</comment>
+  <insert source="ListQ1"/>
+  <col label="c1" value="1">1 - Strongly disagree</col>
+  <col label="c2" value="2">2</col>
+  <col label="c3" value="3">3</col>
+  <col label="c4" value="4">Neither agree nor disagree</col>
+  <col label="c5" value="5">5</col>
+  <col label="c6" value="6">6</col>
+  <col label="c7" value="7">7 - Strongly agree</col>
+  <col label="c98" value="98">Don’t know enough to say</col>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="Q10"
+  rowCond="Q1[row].c2 or Q1[row].c3 or Q1[row].c4 or Q1[row].c5"
+  shuffle="rows">
+  <title>How much do you agree or disagree that the following companies <b>keep their promises</b>?</title>
+  <comment>Please use a scale from 1 to 7 where 1 means that you ‘strongly disagree’ and 7 means that you ‘strongly agree.’</comment>
+  <insert source="ListQ1"/>
+  <col label="c1" value="1">1 - Strongly disagree</col>
+  <col label="c2" value="2">2</col>
+  <col label="c3" value="3">3</col>
+  <col label="c4" value="4">Neither agree nor disagree</col>
+  <col label="c5" value="5">5</col>
+  <col label="c6" value="6">6</col>
+  <col label="c7" value="7">7 - Strongly agree</col>
+  <col label="c98" value="98">Don’t know enough to say</col>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="Q11"
+  rowCond="Q1[row].c2 or Q1[row].c3 or Q1[row].c4 or Q1[row].c5"
+  shuffle="rows">
+  <title>How much do you agree or disagree that the following companies <b>try hard to have a positive impact on society</b>?</title>
+  <comment>Please use a scale from 1 to 7 where 1 means that you ‘strongly disagree’ and 7 means that you ‘strongly agree.’</comment>
+  <insert source="ListQ1"/>
+  <col label="c1" value="1">1 - Strongly disagree</col>
+  <col label="c2" value="2">2</col>
+  <col label="c3" value="3">3</col>
+  <col label="c4" value="4">Neither agree nor disagree</col>
+  <col label="c5" value="5">5</col>
+  <col label="c6" value="6">6</col>
+  <col label="c7" value="7">7 - Strongly agree</col>
+  <col label="c98" value="98">Don’t know enough to say</col>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="Q12"
+  rowCond="Q1[row].c2 or Q1[row].c3 or Q1[row].c4 or Q1[row].c5"
+  shuffle="rows">
+  <title>How much do you agree or disagree that the following companies are <b>a good fit with who you are as a person</b>?</title>
+  <comment>Please use a scale from 1 to 7 where 1 means that you ‘strongly disagree’ and 7 means that you ‘strongly agree.’</comment>
+  <insert source="ListQ1"/>
+  <col label="c1" value="1">1 - Strongly disagree</col>
+  <col label="c2" value="2">2</col>
+  <col label="c3" value="3">3</col>
+  <col label="c4" value="4">Neither agree nor disagree</col>
+  <col label="c5" value="5">5</col>
+  <col label="c6" value="6">6</col>
+  <col label="c7" value="7">7 - Strongly agree</col>
+  <col label="c98" value="98">Don’t know enough to say</col>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="Q13"
+  rowCond="Q1[row].c2 or Q1[row].c3 or Q1[row].c4 or Q1[row].c5"
+  shuffle="rows">
+  <title>How likely is it that you would recommend the following companies to a friend or colleague?</title>
+  <insert source="ListQ1"/>
+  <col label="c0" value="0">Not at all likely</col>
+  <col label="c1" value="1">1</col>
+  <col label="c2" value="2">2</col>
+  <col label="c3" value="3">3</col>
+  <col label="c4" value="4">4</col>
+  <col label="c5" value="5">5</col>
+  <col label="c6" value="6">6</col>
+  <col label="c7" value="7">7</col>
+  <col label="c8" value="8">8</col>
+  <col label="c9" value="9">9</col>
+  <col label="c10" value="10">Extremely Likely</col>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="Q13_NPS"
+  optional="1"
+  where="execute,survey,report">
+  <title>Hidden question for NPS for each brand</title>
+  <exec>
+'''
+for x in Q13.rows:
+	print x
+	if (x.c9 or x.c10) and (Q3.attr(x.label).c1 or Q3.attr(x.label).c2):
+		 Q13_NPS.attr(x.label).val=0
+	if (x.c7 or x.c8) and (Q3.attr(x.label).c1 or Q3.attr(x.label).c2):
+		 Q13_NPS.attr(x.label).val=1
+	if (x.c0 or x.c1 or x.c2 or x.c3 or x.c4 or x.c5 or x.c6) and (Q3.attr(x.label).c1 or Q3.attr(x.label).c2):
+		 Q13_NPS.attr(x.label).val=2
+'''
+
+for x in Q13.rows:
+	if (Q13.attr(x.label).c9 or Q13.attr(x.label).c10) and (Q3.attr(x.label).c1 or Q3.attr(x.label).c2):
+		 Q13_NPS.attr(x.label).val=0
+	if (Q13.attr(x.label).c7 or Q13.attr(x.label).c8) and (Q3.attr(x.label).c1 or Q3.attr(x.label).c2):
+		 Q13_NPS.attr(x.label).val=1
+	if (Q13.attr(x.label).c0 or Q13.attr(x.label).c1 or Q13.attr(x.label).c2 or Q13.attr(x.label).c3 or Q13.attr(x.label).c4 or Q13.attr(x.label).c5 or Q13.attr(x.label).c6) and (Q3.attr(x.label).c1 or Q3.attr(x.label).c2):
+		 Q13_NPS.attr(x.label).val=2
+  </exec>
+
+  <insert source="ListQ1"/>
+  <col label="c1" value="1">PROMOTERS</col>
+  <col label="c2" value="2">PASSIVES</col>
+  <col label="c3" value="3">DETRACTORS</col>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="Q14"
+  cond="Q3.c1.any or Q3.c2.any"
+  rowCond="Q3[row].c1 or Q3[row].c2">
+  <title>And which, if any, of the following is your preferred airline to travel with?</title>
+  <row label="r1" value="1">Delta Air Lines</row>
+  <row label="r2" value="2">American Airlines</row>
+  <row label="r3" value="3">United Airlines</row>
+  <row label="r4" value="4">Southwest Airlines</row>
+  <row label="r5" value="5">JetBlue Airways</row>
+  <row label="r99" cond="1" open="1" openSize="25" randomize="0" value="99">Other, please specify</row>
+</radio>
+
+<suspend/>
+
+<textarea 
+  label="Q15"
+  cond="Q14.any"
+  optional="0"
+  size="25"
+  ss:listDisplay="1">
+  <title>You said that <b>[pipe: Q14]</b> is your preferred brand. Why is this?</title>
+  <comment>Please type your answer into the box below, giving as much detail as possible.</comment>
+</textarea>
+
+<suspend/>
+
+<note>***********************************************************[SECTION 4: TRUST DRIVERS ]***********************************************************</note>
+<suspend/>
+
+<html label="Info2">Thanks for your answers so far. Now we would like to focus in more detail about how some airlines perform on a set of specific behaviors.</html>
+
+<suspend/>
+
+<quota label="Q_Q16" overquota="noqual" sheet="LF_Q16"/>
+
+<suspend/>
+
+<checkbox 
+  label="Hid1_Q16"
+  optional="1"
+  where="execute,survey,report">
+  <title>Hidden : LF for Q16</title>
+  <exec>
+for eachRow in Hid1_Q16.rows:
+	if hasMarker('/LF_Q16/Q6%s' %eachRow.label):
+		Hid1_Q16[eachRow].val = 1
+  </exec>
+
+  <row label="r1">Delta Air Lines</row>
+  <row label="r2">American Airlines</row>
+  <row label="r3">United Airlines</row>
+  <row label="r4">Southwest Airlines</row>
+  <row label="r5">JetBlue Airways</row>
+</checkbox>
+
+<suspend/>
+
+<loop label="Q16_Loop" vars="var1">
+  <title>New Loop</title>
+  <block label="b1" builder:title="default loop block">
+    <suspend/>
+
+    <radio 
+    label="Q16_[loopvar: label]"
+    colLegendRows="8,14"
+    randomize="0">
+      <title>How much do you agree or disagree about the following statements about <b>[loopvar: var1]</b>?</title>
+      <comment>Please use a 7-point scale where 1 means that you ‘strongly disagree’ and 7 means that you ‘strongly agree.’</comment>
+      <row label="r1">Delivers high-quality services and experiences</row>
+      <row label="r2">Has very competent leadership</row>
+      <row label="r3">Is a company that innovates and adapts to what people really need today</row>
+      <row label="r4">Is financially responsible</row>
+      <row label="r5">Is resilient to the challenges facing the airline industry</row>
+      <row label="r6">Puts the safety of employees and customers ahead of profits</row>
+      <row label="r7">Promotes sustainability &amp; responsibility throughout the supply chain</row>
+      <row label="r8">Provides employees with competitive wages, benefits and career advancement opportunities</row>
+      <row label="r9">Communicate openly and transparently on the state of their business</row>
+      <row label="r10">Complies with the highest safety standards</row>
+      <row label="r11">Delivers against the commitments they have communicated</row>
+      <row label="r12">Ensures their services are accessible for all</row>
+      <row label="r13">Leads the industry in operational performance</row>
+      <row label="r14">Prioritizes diversity, equity, and inclusion</row>
+      <row label="r15">Is committed to addressing climate change</row>
+      <row label="r16">Supports local community building initiatives where they operate</row>
+      <row label="r17">Invests in the health and wellbeing of employees</row>
+      <row label="r18">Creates opportunities and fosters understanding by connecting people and communities across the world</row>
+      <row label="r19">Is relevant to my culture and interests</row>
+      <row label="r20">Behaves in a way that aligns with my personal values</row>
+      <row label="r21">Is a company that I would consider investing in</row>
+      <row label="r22">Is a company I could see myself working for if they had a position that matched my experience</row>
+      <col label="c1" value="1">1- I strongly disagree</col>
+      <col label="c2" value="2">2</col>
+      <col label="c3" value="3">3</col>
+      <col label="c4" value="4">4</col>
+      <col label="c5" value="5">5</col>
+      <col label="c6" value="6">6</col>
+      <col label="c7" value="7">7 - I strongly agree</col>
+      <col label="c99" value="99">Don’t know enough to tell</col>
+    </radio>
+  </block>
+
+  <looprow label="Lr1" cond="(Hid1_Q16.r1)">
+    <loopvar name="var1">Delta Air Lines</loopvar>
+  </looprow>
+
+  <looprow label="Lr2" cond="(Hid1_Q16.r2)">
+    <loopvar name="var1">American Airlines</loopvar>
+  </looprow>
+
+  <looprow label="Lr3" cond="(Hid1_Q16.r3)">
+    <loopvar name="var1">United Airlines</loopvar>
+  </looprow>
+
+  <looprow label="Lr5" cond="(Hid1_Q16.r5)">
+    <loopvar name="var1">JetBlue Airways</loopvar>
+  </looprow>
+</loop>
+
+<suspend/>
+
+<note>========================================================================Section 5: MEDIA BUZZ  ========================================================================</note>
+<suspend/>
+
+<html label="Info3">We would now like to understand where you get your news and what you may have seen, read, or heard about companies recently.</html>
+
+<suspend/>
+
+<checkbox 
+  label="Q17"
+  atleast="1"
+  shuffle="rows">
+  <title>Which, if any, of the following sources do you use to read or access business/company news?</title>
+  <comment>Please select all that apply.</comment>
+  <row label="r1">Facebook</row>
+  <row label="r2">Twitter</row>
+  <row label="r3">Instagram</row>
+  <row label="r4">LinkedIn</row>
+  <row label="r5">YouTube</row>
+  <row label="r6">TikTok</row>
+  <row label="r7">Blogs</row>
+  <row label="r8">Online search engines e.g., Google</row>
+  <row label="r9">Online news</row>
+  <row label="r10">Regulatory news feeds</row>
+  <row label="r11">Podcasts</row>
+  <row label="r12">Radio news</row>
+  <row label="r13">TV news</row>
+  <row label="r14">In newspapers / magazines</row>
+  <row label="r15">Company websites</row>
+  <row label="r16">Communications issued directly by companies, such as press releases, newsletters and annual reports</row>
+  <row label="r98" open="1" openSize="25" randomize="0">Other (please specify)</row>
+  <row label="r99" exclusive="1" randomize="0">Don’t know/can’t remember</row>
+</checkbox>
+
+<suspend/>
+
+<checkbox 
+  label="Q18"
+  atleast="1"
+  shuffle="rows">
+  <title>Which, if any, of the following topics are you most interested in hearing about from companies in the airline industry?</title>
+  <comment>Please select all that apply.</comment>
+  <row label="r1">Collaborations/partnerships</row>
+  <row label="r2">Prices, deals, discounts</row>
+  <row label="r3">In-flight features (e.g., seats/space, selection of food/drinks)</row>
+  <row label="r4">Route updates</row>
+  <row label="r5">Airline loyalty programs and their benefits</row>
+  <row label="r6">Airport upgrades e.g., new terminals or lounges etc.</row>
+  <row label="r7">Safety protocols and reported incidents</row>
+  <row label="r8">In-flight accessibility (boarding, inflight, exiting)</row>
+  <row label="r9">Health and safety policies (e.g., Mask and vaccine policy)</row>
+  <row label="r10">Handling of Special Service Requests e.g. wheelchair use, dietary requirements, allergies or sensory assistance</row>
+  <row label="r11">Updates from airline leadership</row>
+  <row label="r12">Employee pay &amp; benefits</row>
+  <row label="r13">Company mission and values</row>
+  <row label="r14">Stocks &amp; earnings</row>
+  <row label="r15">Regulations, litigation, or lawsuits</row>
+  <row label="r16">Clean &amp; renewable energy</row>
+  <row label="r17">Emission reduction goals</row>
+  <row label="r98" open="1" openSize="25" randomize="0">Other, please specify</row>
+  <row label="r99" exclusive="1" randomize="0">None of the above</row>
+</checkbox>
+
+<suspend/>
+
+<exec>
+Q19.rows.order = Q1.rows.order
+</exec>
+
+<radio 
+  label="Q19"
+  rowCond="Q1[row].c2 or Q1[row].c3 or Q1[row].c4 or Q1[row].c5"
+  shuffle="rows">
+  <title>Have you read, heard or seen anything in the news about the following airlines and was the news positive, negative or neutral?</title>
+  <insert source="ListQ1"/>
+  <col label="c1" value="1">Yes, and the news was <b>positive</b></col>
+  <col label="c2" value="2">Yes, and the news was <b>negative</b></col>
+  <col label="c3" value="3">Yes, and the news was <b>neutral</b></col>
+  <col label="c4" value="4">No, I did not read, see or hear any news</col>
+  <col label="c98" value="98">Don’t know</col>
+</radio>
+
+<suspend/>
+
+<checkbox 
+  label="Hid_Q19"
+  optional="1"
+  where="execute,survey,report">
+  <title>Hidden Punch: Q19/c1/2/3</title>
+  <exec>
+for i in Q19.rows:
+	if i.c1 or i.c2 or i.c3:
+		Hid_Q19.attr(i.label).val=1
+  </exec>
+
+  <row label="r1">Delta Air Lines</row>
+  <row label="r2">American Airlines</row>
+  <row label="r3">United Airlines</row>
+  <row label="r4">Southwest Airlines</row>
+  <row label="r5">JetBlue Airways</row>
+</checkbox>
+
+<suspend/>
+
+<checkbox 
+  label="HidQ20"
+  optional="1"
+  where="execute,survey,report">
+  <title>Hidden to qualified brands for Q20 leastfill.</title>
+  <exec>
+for eachRow in range (2,6):
+	if (Hid_Q7.attr('r'+str(eachRow)).val == 1) and (Q19.attr('r'+str(eachRow)).c1 or Q19.attr('r'+str(eachRow)).c2 or Q19.attr('r'+str(eachRow)).c3):
+		HidQ20.attr('r'+str(eachRow)).val = 1
+  </exec>
+
+  <row label="r1">Delta Air Lines</row>
+  <row label="r2">American Airlines</row>
+  <row label="r3">United Airlines</row>
+  <row label="r4">Southwest Airlines</row>
+  <row label="r5">JetBlue Airways</row>
+</checkbox>
+
+<suspend/>
+
+<quota cond="(HidQ20.count == 0) and (Hid_Q19.but(Hid_Q19.r1).count ge 1)" overquota="noqual" sheet="LF1_Q20"/>
+
+<suspend/>
+
+<checkbox 
+  label="HidQ20Final"
+  optional="1"
+  where="execute,survey,report">
+  <title>Hidden to qualified brands for Q20 leastfill.</title>
+  <exec>
+if HidQ20.count ge 1:
+	for eachRow in HidQ20Final.rows:
+		if HidQ20.attr(eachRow.label).val == 1:
+			HidQ20Final.attr(eachRow.label).val = 1
+if (HidQ20.count == 0) and (Hid_Q19.but(Hid_Q19.r1).count ge 1):
+	for eachRow in HidQ20Final.rows:
+		if hasMarker('/LF1_Q20/Hid_Q19%s' %eachRow.label):
+			HidQ20Final[eachRow].val = 1
+if (Q19.r1.c1 or Q19.r1.c2 or Q19.r1.c3):
+	HidQ20Final.r1.val = 1
+  </exec>
+
+  <row label="r1">Delta Air Lines</row>
+  <row label="r2">American Airlines</row>
+  <row label="r3">United Airlines</row>
+  <row label="r4">Southwest Airlines</row>
+  <row label="r5">JetBlue Airways</row>
+</checkbox>
+
+<suspend/>
+
+<textarea 
+  label="Q20"
+  cond="Q19.r1.c1 or Q19.r1.c2 or  Q19.r1.c3"
+  optional="0"
+  shuffle="rows"
+  ss:listDisplay="1">
+  <title>What specifically did you read, hear, or see about <b>Delta Air Lines</b>? </title>
+  <comment>Please write your answer below, giving as much detail as possible.</comment>
+</textarea>
+
+<suspend/>
+
+<exec>
+for x in Hid_Q20.rows:
+	if HidQ20Final.attr(x.label):
+		Hid_Q20.val=x.index
+</exec>
+
+<radio 
+  label="Hid_Q20"
+  optional="1"
+  where="execute,survey,report">
+  <title>Hidden Punch: Q20</title>
+  <row label="r2" value="2">American Airlines</row>
+  <row label="r3" value="3">United Airlines</row>
+  <row label="r4" value="4">Southwest Airlines</row>
+  <row label="r5" value="5">JetBlue Airways</row>
+</radio>
+
+<suspend/>
+
+<textarea 
+  label="Q20a"
+  cond="Hid_Q20.any"
+  optional="0"
+  ss:listDisplay="1">
+  <title>What specifically did you read, hear, or see something about <b>[pipe: Hid_Q20]</b>?</title>
+  <comment>Please write your answer below, giving as much detail as possible.</comment>
+</textarea>
+
+<suspend/>
+
+<radio 
+  label="Q21"
+  shuffle="rows">
+  <title>Before today, have you seen or heard the following taglines?</title>
+  <comment>Please select one answer for each row.</comment>
+  <row label="r1">Keep Climbing</row>
+  <row label="r2">You Are Why We Fly</row>
+  <row label="r3">Good Leads The Way</row>
+  <row label="r4">Heart Sets Us Apart</row>
+  <row label="r5">You above all</row>
+  <col label="c1" value="1">Yes</col>
+  <col label="c2" value="2">No</col>
+  <col label="c98" value="98">Don’t know</col>
+</radio>
+
+<suspend/>
+
+<exec>
+Q22.cols.order = Q21.rows.order
+</exec>
+
+<radio 
+  label="Q22"
+  cond="Q21.c1.any"
+  colCond="Q21.rows[col.index].c1"
+  grouping="cols"
+  shuffle="cols">
+  <title>And which airline do you associate with each of the following taglines?</title>
+  <comment>Please select one for each column</comment>
+  <row label="r1" value="1">Delta Air Lines</row>
+  <row label="r2" value="2">American Airlines</row>
+  <row label="r3" value="3">United Airlines</row>
+  <row label="r4" value="4">Southwest Airlines</row>
+  <row label="r5" value="5">JetBlue Airways</row>
+  <row label="r99" randomize="0" value="99">None of the above</row>
+  <col label="c1">Keep Climbing</col>
+  <col label="c2">You Are Why We Fly</col>
+  <col label="c3">Good Leads The Way</col>
+  <col label="c4">Heart Sets Us Apart</col>
+  <col label="c5">You above all</col>
+</radio>
+
+<suspend/>
+
+<html label="Info4">You’re nearly there! Before we finish, we have a few questions for you specifically about <b>Delta Air Lines</b>.</html>
+
+<suspend/>
+
+<checkbox 
+  label="Q23"
+  cond="Q19.r1.c1 or Q19.r1.c2 or Q19.r1.c3"
+  atleast="1"
+  shuffle="rows">
+  <title>Through which of the following sources did you read, hear, or see something about <b>Delta Air Lines</b>? </title>
+  <comment>Please select all that apply.</comment>
+  <row label="r1">TV advertising</row>
+  <row label="r2">Advertising in the street (e.g., billboard, subway ads, etc.)</row>
+  <row label="r3">Internet banner/ad</row>
+  <row label="r4">Celebrities or influencers endorsing the company</row>
+  <row label="r5">Event sponsored, or organized, by the company</row>
+  <row label="r6">Email/newsletter from the company</row>
+  <row label="r7">Social media content from the company or its leaders</row>
+  <row label="r8">Brand website</row>
+  <row label="r9">Podcast</row>
+  <row label="r10">Online news about the company</row>
+  <row label="r11">TV/radio coverage about the company</row>
+  <row label="r12">Social media content posted by others about the company</row>
+  <row label="r13">Print news about the company (e.g., in a newspaper/magazine)</row>
+  <row label="r14">Word of mouth (e.g., from friends/relatives)</row>
+  <row label="r15">Through an employee of the company</row>
+  <row label="r98" open="1" openSize="25" randomize="0">Other (please specify)</row>
+  <row label="r99" exclusive="1" randomize="0">Don’t know/can’t remember</row>
+</checkbox>
+
+<suspend/>
+
+<radio 
+  label="Q24"
+  cardsort:bucketCSS="height:50px; width:180px; border:1px solid #000000; background: #808080; font-weight: bold"
+  cardsort:cardCSS="border:1px solid #000000"
+  shuffle="rows"
+  uses="cardsort.6"
+  values="order">
+  <title>Before today, to what extent were you aware of the following regarding <b>Delta Air Lines</b>? </title>
+  <comment>Please select one per row.</comment>
+  <row label="r1">Delta has partnered with Peloton to produce ‘classes in the clouds,’ a series of exclusive stretching and meditation classes that can be accessed via seatback in-flight entertainment</row>
+  <row label="r2">Delta is rethinking the onboard experience with sustainability and supplier diversity in mind; swapping out single-use plastic and featuring products that are made by people who reflect the communities we serve</row>
+  <row label="r3">Delta’s largest, best-in-class Delta Sky Clubs are now open at New York’s LaGuardia Airport (LGA) and Los Angeles International Airport (LAX)</row>
+  <row label="r4">Delta has announced the addition of 100 Boeing 737 Max aircraft to fleet to improve fuel efficiency and meet sustainability goals</row>
+  <row label="r5">Delta named Eric Philips its first Chief Digital Officer as the airline looks to improve customer interactions with Delta’s digital tools and channels</row>
+  <row label="r6">Delta has released its Climate Lobbying Report detailing global advocacy activities and policies engagements that support its climate goals</row>
+  <row label="r7">Delta is partnering with Mexican apparel brand Someone Somewhere to introduce more sustainable artisan-made amenity kits that include premium skincare products from Grown Alchemist</row>
+  <row label="r8">Delta has continued to make the SkyMiles program more rewarding and easier to use by making the ability to earn toward Medallion Status on Delta-marketed Award Travel a permanent feature of the program, and by removing the 75,000 mileage earn cap</row>
+  <row label="r9">Delta named Pamela Fletcher as Chief Sustainability Officer in 2022, the industry’s only C-Suite level CSO</row>
+  <row label="r10">Delta named Dr. Henry Ting as the company’s first Chief Health Officer (CHO), leading on reimaging the company’s approach to health and wellbeing</row>
+  <row label="r11">Delta is the Official Airline of Team USA on the road to the Olympic and Paralympic Games Paris 2024</row>
+  <col label="c1" value="1">Not aware</col>
+  <col label="c2" value="2">Aware but don’t know much about it</col>
+  <col label="c3" value="3">Aware and know a little bit about it</col>
+  <col label="c4" value="4">Aware and know a lot about it</col>
+  <col label="c99" value="99">Don’t know</col>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="Q25"
+  rowCond="Q24[row].c2 or Q24[row].c3 or Q24[row].c4"
+  shuffle="rows"
+  shuffleBy="Q24">
+  <title>Being aware of this initiative or initiatives, what impact, if any, does this have on your opinion of <b>Delta Air Lines</b>?</title>
+  <comment>Please select one per row.</comment>
+  <row label="r1">Delta has partnered with Peloton to produce ‘classes in the clouds,’ a series of exclusive stretching and meditation classes that can be accessed via seatback in-flight entertainment</row>
+  <row label="r2">Delta is rethinking the onboard experience with sustainability and supplier diversity in mind; swapping out single-use plastic and featuring products that are made by people who reflect the communities we serve</row>
+  <row label="r3">Delta’s largest, best-in-class Delta Sky Clubs are now open at New York’s LaGuardia Airport (LGA) and Los Angeles International Airport (LAX)</row>
+  <row label="r4">Delta has announced the addition of 100 Boeing 737 Max aircraft to fleet to improve fuel efficiency and meet sustainability goals</row>
+  <row label="r5">Delta named Eric Philips its first Chief Digital Officer as the airline looks to improve customer interactions with Delta’s digital tools and channels</row>
+  <row label="r6">Delta has released its Climate Lobbying Report detailing global advocacy activities and policies engagements that support its climate goals</row>
+  <row label="r7">Delta is partnering with Mexican apparel brand Someone Somewhere to introduce more sustainable artisan-made amenity kits that include premium skincare products from Grown Alchemist</row>
+  <row label="r8">Delta has continued to make the SkyMiles program more rewarding and easier to use by making the ability to earn toward Medallion Status on Delta-marketed Award Travel a permanent feature of the program, and by removing the 75,000 mileage earn cap</row>
+  <row label="r9">Delta named Pamela Fletcher as Chief Sustainability Officer in 2022, the industry’s only C-Suite level CSO</row>
+  <row label="r10">Delta named Dr. Henry Ting as the company’s first Chief Health Officer (CHO), leading on reimaging the company’s approach to health and wellbeing</row>
+  <row label="r11">Delta is the Official Airline of Team USA on the road to the Olympic and Paralympic Games Paris 2024</row>
+  <col label="c1" value="1">Significantly worse opinion of Delta</col>
+  <col label="c2" value="2">Slightly worse opinion of Delta</col>
+  <col label="c3" value="3">No change</col>
+  <col label="c4" value="4">Slightly better opinion of Delta</col>
+  <col label="c5" value="5">Significantly better opinion of Delta</col>
+  <col label="c99" value="99">Don’t  know</col>
+</radio>
+
+<suspend/>
+
+<html label="Info5">Finally, we have a few questions that will be used for analysis purposes only.</html>
+
+<suspend/>
+
+<checkbox 
+  label="C1"
+  atleast="1"
+  shuffle="rows">
+  <title>Are you a member of any of the following airline loyalty programs?</title>
+  <comment>Please select any that apply.</comment>
+  <row label="r1">SkyMiles (Delta Air Lines)</row>
+  <row label="r2">MileagePlus (United Airlines)</row>
+  <row label="r3">AAdvantage (American Airlines)</row>
+  <row label="r4">Rapid Rewards (Southwest Airlines)</row>
+  <row label="r5">TrueBlue (JetBlue Airways)</row>
+  <row label="r98" open="1" openSize="25" randomize="0">Other, please specify</row>
+  <row label="r99" exclusive="1" randomize="0">None of the above</row>
+</checkbox>
+
+<suspend/>
+
+<radio 
+  label="C2"
+  grouping="cols"
+  shuffle="rows">
+  <title>Which type of seating do you typically book when flying for each of the following purposes?</title>
+  <comment>Please select one for each flying occasion.</comment>
+  <row label="r1" value="1">Basic Economy</row>
+  <row label="r2" value="2">Main Cabin</row>
+  <row label="r3" value="3">Comfort+ / Main Cabin Extra / Economy Plus</row>
+  <row label="r4" value="4">Premium Economy / Premium Select</row>
+  <row label="r5" value="5">Business</row>
+  <row label="r6" value="6">First Class</row>
+  <row label="r98" open="1" openSize="25" randomize="0" value="98">Other</row>
+  <row label="r99" randomize="0" value="99">Not applicable – I do not fly for this purpose</row>
+  <col label="c1">For Leisure purposes</col>
+  <col label="c2">For Business purposes</col>
+  <col label="c3">For domestic flights (within the US)</col>
+  <col label="c4">For international flights (from one country to another)</col>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="C3">
+  <title>Which of the following best describes your current employment status?</title>
+  <comment>Please select one.</comment>
+  <row label="r1" value="1">Employed full-time</row>
+  <row label="r2" value="2">Employed part-time / Contract</row>
+  <row label="r3" value="3">Unemployed</row>
+  <row label="r4" value="4">Retired</row>
+  <row label="r5" value="5">Student</row>
+  <row label="r6" value="6">Homemaker/Caregiver/Stay-at-home parent</row>
+  <row label="r98" randomize="0" value="98">Other</row>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="C4">
+  <title>Which of the following areas best describes your current professional area of focus?</title>
+  <comment>Please select one.</comment>
+  <row label="r1" value="1">Aerospace, Defence &amp; Security</row>
+  <row label="r2" value="2">Asset and Wealth Management</row>
+  <row label="r3" value="3">Automotive</row>
+  <row label="r4" value="4">Banking &amp; Capital Markets</row>
+  <row label="r5" value="5">Consumer Markets</row>
+  <row label="r6" value="6">Energy, Utilities &amp; Resources</row>
+  <row label="r7" value="7">Engineering &amp; Construction</row>
+  <row label="r8" value="8">Financial Services / Investing</row>
+  <row label="r9" value="9">Government &amp; Public Services</row>
+  <row label="r10" value="10">Healthcare</row>
+  <row label="r11" value="11">Hospitality &amp; Leisure</row>
+  <row label="r12" value="12">Industrial Manufacturing</row>
+  <row label="r13" value="13">Insurance</row>
+  <row label="r14" value="14">News media</row>
+  <row label="r15" value="15">Pharmaceuticals &amp; Life Sciences</row>
+  <row label="r16" value="16">Technology</row>
+  <row label="r17" value="17">Telecommunications</row>
+  <row label="r18" value="18">Transportation &amp; Logistics</row>
+  <row label="r98" open="1" openSize="25" randomize="0" value="98">Other (SPECIFY)</row>
+  <row label="r99" randomize="0" value="99">None of the above</row>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="C5"
+  cond="C4.r2 or C4.r4 or C4.r8">
+  <title>In your current job, do you work for an institution that invests for your own institution, or on behalf of others?</title>
+  <comment>Please select one response.</comment>
+  <row label="r1" value="1">Yes</row>
+  <row label="r2" value="2">No</row>
+  <row label="r99" randomize="0" value="99">Prefer not to answer / don’t know</row>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="C6"
+  cond="C4.r2 or C4.r4 or C4.r8">
+  <title>In your current job, are you directly responsible for, or do you directly contribute to decisions regarding an institution’s investable assets?</title>
+  <comment>Please select one response.</comment>
+  <row label="r1" value="1">Yes</row>
+  <row label="r2" value="2">No</row>
+  <row label="r99" randomize="0" value="99">Prefer not to answer / don’t know</row>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="C7"
+  cond="C4.r2 or C4.r4 or C4.r8">
+  <title>Which of the following best describes your position within your organization?</title>
+  <comment>Please select one response.</comment>
+  <row label="r1" value="1">Chief Investment Officer</row>
+  <row label="r2" value="2">Portfolio Manager</row>
+  <row label="r3" value="3">Director of Research</row>
+  <row label="r4" value="4">Investment Stewardship</row>
+  <row label="r5" value="5">Buy-side Analyst</row>
+  <row label="r6" value="6">Sell-side Analyst</row>
+  <row label="r7" value="7">Financial Advisor</row>
+  <row label="r98" open="1" openSize="25" randomize="0" value="98">Other, please specify</row>
+  <row label="r99" randomize="0" value="99">None of the above</row>
+</radio>
+
+<suspend/>
+
+<exec>
+C8.rows.order = Q1.rows.order
+</exec>
+
+<radio 
+  label="C8"
+  rowCond="Q1[row].c2 or Q1[row].c3 or Q1[row].c4 or Q1[row].c5"
+  shuffle="rows">
+  <title>Do you currently own shares for any of the following companies (this could be holding individual shares or as part of a fund)?</title>
+  <comment>Please select one response per company.</comment>
+  <insert source="ListQ1"/>
+  <col label="c1" value="1">Yes, I currently own individual shares in this company</col>
+  <col label="c2" value="2">Yes, I currently own shares in this company as part of a fund</col>
+  <col label="c3" value="3">No, I do not own shares in this company</col>
+  <col label="c98" value="98">Don't Know</col>
+</radio>
+
+<suspend/>
+
+<checkbox 
+  label="C8_RECODE"
+  optional="1"
+  where="execute,survey,report">
+  <title>Recode for Investors</title>
+  <exec>
+for x in C8.rows:
+	if x.c1 or x.c2:
+		getattr(C8_RECODE, x.label).val=1
+  </exec>
+
+  <row label="r1">INVESTOR IN Delta Airlines (C8/row1=c1-2)</row>
+  <row label="r2">INVESTOR IN American Airlines (C8/row2=c1-2)</row>
+  <row label="r3">INVESTOR IN United Airlines (C8/row3=c1-2)</row>
+  <row label="r4">INVESTOR IN Southwest Airlines (C8/row4=c1-2)</row>
+  <row label="r5">INVESTOR IN JetBlue Airways (C8/row5=c1-2)</row>
+</checkbox>
+
+<suspend/>
+
+<checkbox 
+  label="QUOTA_C8"
+  optional="1"
+  where="execute,survey,report">
+  <title>C8 RECODE INVESTORS</title>
+  <exec>
+for x in C8.rows:
+	if x.c1 or x.c2:
+		getattr(QUOTA_C8, x.label).val=1
+  </exec>
+
+  <row label="r1">INVESTOR IN Delta Airlines (C8/row1=c1-2)</row>
+  <row label="r2">INVESTOR IN American Airlines (C8/row2=c1-2)</row>
+  <row label="r3">INVESTOR IN United Airlines (C8/row3=c1-2)</row>
+  <row label="r4">IINVESTOR IN Southwest Airlines (C8/row4=c1-2)</row>
+  <row label="r5">INVESTOR IN JetBlue Airways (C8/row5=c1-2)</row>
+</checkbox>
+
+<suspend/>
+
+<quota cond="QUOTA_C8.any" overquota="noqual" sheet="C8_Quota"/>
+
+<suspend/>
+
+<exec>
+C9.rows.order = Q1.rows.order
+</exec>
+
+<radio 
+  label="C9"
+  cond="C8.c1.any"
+  rowCond="Q1[row].c2 or Q1[row].c3 or Q1[row].c4 or Q1[row].c5"
+  shuffle="rows">
+  <title>And how long have you held shares in the following companies?</title>
+  <comment>Please select one response per company.</comment>
+  <insert source="ListQ1"/>
+  <col label="c1" value="1">Less than 6 months</col>
+  <col label="c2" value="2">Between 6 months and 1 year</col>
+  <col label="c3" value="3">Between 1 and 2 years</col>
+  <col label="c4" value="4">Between 2 and 5 years</col>
+  <col label="c5" value="5">Over 5 years</col>
+  <col label="c98" randomize="0" value="98">Don't Know</col>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="C10">
+  <title>Do you consider yourself to be of Hispanic or Latino/a/x origin?</title>
+  <comment>Please select one response.</comment>
+  <row label="r1" value="1">Yes</row>
+  <row label="r2" value="2">No</row>
+  <row label="r99" randomize="0" value="99">Prefer not to answer</row>
+</radio>
+
+<suspend/>
+
+<checkbox 
+  label="C11"
+  atleast="1">
+  <title>Which of the following best describes your racial background?</title>
+  <comment>Please select all that apply. </comment>
+  <row label="r1">White or Caucasian</row>
+  <row label="r2">Black or African American</row>
+  <row label="r3">Asian or Asian American</row>
+  <row label="r4">Native Hawaiian or Other Pacific Islander</row>
+  <row label="r5">Indigenous American or Indigenous Alaskan</row>
+  <row label="r6">Middle Eastern or North African</row>
+  <row label="r98" open="1" openSize="25" randomize="0">Prefer to self-describe, specify:</row>
+  <row label="r99" exclusive="1" randomize="0">Prefer not to answer</row>
+</checkbox>
+
+<suspend/>
+
+<radio 
+  label="C11a"
+  optional="1"
+  where="execute,survey,report">
+  <title>HIDDEN QUESTION: (RACE/ETHNICITY RECODE)</title>
+  <exec>
+
+if (C10.r2 or C10.r99) and (C11.r1 or C11.r6) and (C11.count == 1):
+    C11a.val = C11a.r1.index
+
+if (C10.r2 or C10.r99) and (C11.r2) and (C11.count == 1):
+    C11a.val = C11a.r2.index
+
+if (C10.r1):
+    C11a.val = C11a.r3.index
+
+if (C10.r2 or C10.r99) and (C11.r3 or C11.r4) and (C11.count == 1):
+    C11a.val = C11a.r4.index
+    
+if (C10.r2 or C10.r99) and (C11.r5 or C11.r98) or (C11.count gt 1):
+    C11a.val = C11a.r5.index
+
+if (C10.r2 or C10.r99) and (C11.r99):
+    C11a.val = C11a.r6.index
+  </exec>
+
+  <row label="r1">NH-White ((S8/01 or 06) and (S9/02 or 99) and S9 ANSWER COUNT = 1)</row>
+  <row label="r2">NH-Black (S8/02 and (S9/02 or 99) and S9 ANSWER COUNT = 1)</row>
+  <row label="r3">Hispanic (S9/01)</row>
+  <row label="r4">NH-Asian ((S8/03 or 04) and (S9/02 or 99) and S9 ANSWER COUNT = 1)</row>
+  <row label="r5">NH-Other ((S8/05 or 07) and (S9/02 or 99) and S9 ANSWER COUNT &gt; 1)</row>
+  <row label="r6">Prefer not to answer (S8/99 and S9/03)</row>
+</radio>
+
+<suspend/>
+
+<radio 
+  label="C11b"
+  optional="1"
+  where="execute,survey,report">
+  <title>Recode (Multi/Biracial)</title>
+  <exec>
+if C11.but(C11.r99).count gt 1:
+	C11b.val=C11b.r1.index
+if C11.but(C11.r99).count == 1:
+	C11b.val=C11b.r2.index
+  </exec>
+
+  <row label="r1">Multiracial</row>
+  <row label="r2">Non-Multiracial</row>
+</radio>
+
+<suspend/>
+
+<number 
+  label="QC2"
+  optional="0"
+  size="4"
+  ss:listDisplay="1"
+  verify="range(1900,2022)">
+  <title>In what year were you born?</title>
+</number>
+
+<suspend/>
+
+<radio 
+  label="CQC2"
+  optional="1"
+  where="execute,survey,report">
+  <title>HIDDEN RECODE for QC2</title>
+  <exec>
+x = 2022 - QC2.val
+print x
+y=int(S2.val-x)
+if y in range (-2,3):
+  CQC2.val=CQC2.r1.index
+else:
+  CQC2.val=CQC2.r2.index
+  </exec>
+
+  <row label="r1">(2022-S2) is +/- 2 of QC2 or equal</row>
+  <row label="r2">(2022-S2) is more than +/- 2 of QC</row>
+</radio>
+
+<suspend/>
+
+<html label="Info6">Those are all the questions we have for you today. Thank you for completing our survey.</html>
+
+<suspend/>
+
+<alert label="qn_1" cond="(p.x == 50) and (hasMarker('/Overall/overall'))" emails="Joshua.Wu@edelmanintelligence.com Matthew.Murphy@edelmanintelligence.com edelman@cross-tab.com" sender="edelman@cross-tab.com" threshold="${p.half}">
+  <body>Quota marker /Overall/overall has reached its threshold ${p.half}</body>
+  <subject>[selfserve/53b/151012] Quota /Overall/overall reached</subject></alert></survey>
